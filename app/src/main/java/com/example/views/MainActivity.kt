@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.viewModels
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.food_recipe_app.R
@@ -15,10 +14,7 @@ import com.example.viewmodels.RecipeViewModel
 class MainActivity : AppCompatActivity(), RecipeAdapter.ViewHolderListener  {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: RecipeAdapter
-    private lateinit var layoutManager: RecyclerView.LayoutManager
     private val recipeViewModel: RecipeViewModel by viewModels()
-    private lateinit var textView: TextView
-    private lateinit var button: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,11 +36,12 @@ class MainActivity : AppCompatActivity(), RecipeAdapter.ViewHolderListener  {
          * and makes it the adapter for the recyclerview
          */
         adapter = RecipeAdapter(this)
+        adapter.setRecipes(recipeViewModel.getRecipes().value!!)
+        recyclerView.adapter = adapter
 
-
-        val recipeViewModel = RecipeViewModel()
-
-
+        recipeViewModel.getRecipes().observe(this, { recipes ->
+            adapter.setRecipes(recipes)
+        })
 
     }
 

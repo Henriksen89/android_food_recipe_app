@@ -23,6 +23,23 @@ class RecipeViewModel: ViewModel() {
 
     private fun populateRecipes(){
         recipeList.add(Recipe("RecipeTitle blaaah"))
+        recipeList.add(Recipe("RecipeTitle blaaah"))
+        recipeList.add(Recipe("RecipeTitle blaaah"))
+        recipeList.add(Recipe("RecipeTitle blaaah"))
+        recipeList.add(Recipe("RecipeTitle blaaah"))
+        recipeList.add(Recipe("RecipeTitle blaaah"))
+        recipeList.add(Recipe("RecipeTitle blaaah"))
+        recipeList.add(Recipe("RecipeTitle blaaah"))
+        recipeList.add(Recipe("RecipeTitle blaaah"))
+        recipeList.add(Recipe("RecipeTitle blaaah"))
+        recipeList.add(Recipe("RecipeTitle blaaah"))
+        recipeList.add(Recipe("RecipeTitle blaaah"))
+        recipeList.add(Recipe("RecipeTitle blaaah"))
+        recipeList.add(Recipe("RecipeTitle blaaah"))
+        recipeList.add(Recipe("RecipeTitle blaaah"))
+        recipeList.add(Recipe("RecipeTitle blaaah"))
+        recipeList.add(Recipe("RecipeTitle blaaah"))
+        recipeList.add(Recipe("RecipeTitle blaaah"))
     }
 
 
