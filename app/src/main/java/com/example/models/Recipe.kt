@@ -1,3 +1,3 @@
 package com.example.models
 
-data class Recipe(val text: String)
+data class Recipe(val recipeTitle: String)
