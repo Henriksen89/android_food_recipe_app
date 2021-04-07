@@ -8,12 +8,23 @@ import com.example.repository.RecipeRepository
 
 class RecipeViewModel: ViewModel() {
     private val recipeRepository: RecipeRepository = RecipeRepository()
-    private val _recipe = MutableLiveData<Recipe>()
+    private var recipes = MutableLiveData<ArrayList<Recipe>>()
+    private val recipeList = ArrayList<Recipe>()
 
-    val recipe: LiveData<Recipe>
-        get() = _recipe
-
-    fun randomRecipe(){
-        _recipe.value = recipeRepository.fetchRecipe()
+    init {
+        populateRecipes()
+        recipes.value = recipeList
     }
+
+    fun getRecipes() : LiveData<ArrayList<Recipe>>{
+        return recipes
+
+    }
+
+    private fun populateRecipes(){
+        recipeList.add(Recipe("RecipeTitle blaaah"))
+    }
+
+
+
 }
