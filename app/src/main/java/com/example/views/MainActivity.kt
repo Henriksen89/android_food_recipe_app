@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import androidx.activity.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,8 +16,7 @@ class MainActivity : AppCompatActivity(), RecipeAdapter.ViewHolderListener  {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: RecipeAdapter
     private lateinit var layoutManager: RecyclerView.LayoutManager
-    private val recipeViewModel: RecipeViewModel by viewmodels()
-    //private val jokeViewModel: RecipeViewModel by viewModels()
+    private val recipeViewModel: RecipeViewModel by viewModels()
     private lateinit var textView: TextView
     private lateinit var button: Button
 
