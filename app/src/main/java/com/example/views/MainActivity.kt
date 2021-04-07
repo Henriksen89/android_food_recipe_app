@@ -9,8 +9,8 @@ import com.example.viewmodels.RecipeViewModel
 
 
 class MainActivity : AppCompatActivity() {
-    // Create the view model which provides data for the view
-    //private val recipeViewModel: RecipeViewModel = TODO()
+
+    //private val jokeViewModel: RecipeViewModel by viewModels()
     private lateinit var textView: TextView
     private lateinit var button: Button
 
@@ -18,12 +18,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val recipeViewModel = RecipeViewModel()
+
         textView = findViewById(R.id.textView)
         button = findViewById(R.id.button)
-     //   button.setOnClickListener {
-       //     recipeViewModel.randomRecipe()
-   //     }
+        button.setOnClickListener {
+            recipeViewModel.randomRecipe()
+        }
 
-
+        recipeViewModel.recipe.observe(this, { recipe ->
+            textView.text = recipe.text
+        })
     }
 }
