@@ -27,9 +27,9 @@ class RecipeViewModel: ViewModel() {
     }
 
     private fun populateRecipes(){
-        recipeList.add(Recipe(images[0],"RecipeTitle blaaah"))
-        recipeList.add(Recipe(images[1],"RecipeTitle blaaah"))
-        recipeList.add(Recipe(images[2],"RecipeTitle blaaah"))
+        recipeList.add(Recipe(images[0],"RecipeTitle blaaah", "This is a nice dish mateee"))
+        recipeList.add(Recipe(images[1],"RecipeTitle blaaah", "This is a nice dish mateee"))
+        recipeList.add(Recipe(images[2],"RecipeTitle blaaah", "This is a nice dish mateee"))
     }
 
 
