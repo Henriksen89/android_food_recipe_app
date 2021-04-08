@@ -39,29 +39,36 @@
             tools:layout_editor_absoluteX="-61dp"
             tools:layout_editor_absoluteY="75dp">
 
-            <Button
-                android:id="@+id/btn_mt_main_course"
+            <com.google.android.material.chip.ChipGroup
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="Main Course"
-                style="?android:attr/buttonBarButtonStyle" />
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="5dp">
 
-            <Button
-                android:id="@+id/btn_mt_side_dish"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="Side Dish"
-                style="?android:attr/buttonBarButtonStyle" />
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_main_course"
+                    android:text="Main Course"
+                    style="@style/CustomChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
-            <Button
-                android:id="@+id/btn_mt_dessert"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="Dessert"
-                style="?android:attr/buttonBarButtonStyle" />
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_side_dish"
+                    android:text="Side Dish"
+                    style="@style/CustomChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_dessert"
+                    android:text="Dessert"
+                    style="@style/CustomChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.chip.ChipGroup>
+
         </LinearLayout>
     </HorizontalScrollView>
 
@@ -96,37 +103,37 @@
             tools:layout_editor_absoluteX="-61dp"
             tools:layout_editor_absoluteY="75dp">
 
-            <Button
-                android:id="@+id/btn_dt_gluten_free"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="Gluten Free"
-                style="?android:attr/buttonBarButtonStyle" />
 
-            <Button
-                android:id="@+id/btn_dt_vegetarian"
+            <com.google.android.material.chip.ChipGroup
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="Vegetarian"
-                style="?android:attr/buttonBarButtonStyle" />
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="5dp">
 
-            <Button
-                android:id="@+id/btn_dt_chicken"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="Chicken"
-                style="?android:attr/buttonBarButtonStyle" />
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_gluten_free"
+                    android:text="Gluten Free"
+                    style="@style/CustomChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
-            <Button
-                android:id="@+id/btn_dt_pork"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="Pork"
-                style="?android:attr/buttonBarButtonStyle" />
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_vegetarian"
+                    android:text="Vegetarian"
+                    style="@style/CustomChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_chicken"
+                    android:text="Chicken"
+                    style="@style/CustomChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.chip.ChipGroup>
         </LinearLayout>
     </HorizontalScrollView>
 
