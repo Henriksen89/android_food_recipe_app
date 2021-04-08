@@ -1,31 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
-    android:padding="16dp">
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="3dp"
+    app:cardUseCompatPadding="true">
 
-    <ImageView
-        android:id="@+id/recipeImageView"
-        android:layout_width="wrap_content"
+
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:contentDescription="TODO"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars[0]" />
+        android:padding="16dp">
+        <ImageView
+            android:id="@+id/recipeImageView"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:contentDescription="image"
+            android:scaleType="centerCrop"
+            tools:srcCompat="@drawable/ic_launcher_background" />
 
-    <TextView
-        android:id="@+id/recipeTextView"
-        android:layout_width="58dp"
-        android:layout_height="49dp"
-        android:text="@string/textview"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.537"
-        app:layout_constraintStart_toEndOf="@+id/recipeImageView"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/recipeTextViewTitle"
+            android:layout_toRightOf="@id/recipeImageView"
+            android:layout_toEndOf="@id/recipeImageView"
+            android:text="@string/textview"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp">
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/recipeTextViewDescription"
+            android:text="Description"
+            android:textSize="18sp"
+            android:layout_toRightOf="@id/recipeImageView"
+            android:layout_toEndOf="@id/recipeImageView"
+            android:layout_below="@id/recipeTextViewTitle"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp">>
+        </TextView>
+    </RelativeLayout>
+    </androidx.cardview.widget.CardView>
