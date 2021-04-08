@@ -10,11 +10,8 @@ import com.example.repository.RecipeRepository
 class RecipeViewModel: ViewModel() {
     private val recipeRepository: RecipeRepository = RecipeRepository()
     private var recipes = MutableLiveData<ArrayList<Recipe>>()
-    private val recipeList = ArrayList<Recipe>()
-    private var images: IntArray = intArrayOf(
-            R.drawable.bulgogi_burgers,
-            R.drawable.green_salat,
-            R.drawable.vegansk_paprikagryderet)
+    private var recipeList = ArrayList<Recipe>()
+    
 
 
     init {
@@ -27,9 +24,7 @@ class RecipeViewModel: ViewModel() {
     }
 
     private fun populateRecipes(){
-        recipeList.add(Recipe(images[0],"RecipeTitle blaaah", "This is a nice dish mateee"))
-        recipeList.add(Recipe(images[1],"RecipeTitle blaaah", "This is a nice dish mateee"))
-        recipeList.add(Recipe(images[2],"RecipeTitle blaaah", "This is a nice dish mateee"))
+        recipeList = recipeRepository.fetchRecipes()
     }
 
 
