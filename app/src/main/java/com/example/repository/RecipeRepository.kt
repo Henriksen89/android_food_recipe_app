@@ -7,8 +7,8 @@ class RecipeRepository {
 
     init {
         if (recipies.isEmpty()) {
-            recipies.add(Recipe("Suppe"))
-            recipies.add(Recipe("Bræk"))
+            //recipies.add(Recipe("Suppe"))
+            //recipies.add(Recipe("Bræk"))
         }
     }
 
