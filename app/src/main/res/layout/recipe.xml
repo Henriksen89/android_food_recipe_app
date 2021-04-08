@@ -41,7 +41,8 @@
             android:layout_toEndOf="@id/recipeImageView"
             android:text="@string/textview"
             android:textSize="22sp">
-            a
+            android:textStyle="bold"
+
         </TextView>
 
         <TextView
