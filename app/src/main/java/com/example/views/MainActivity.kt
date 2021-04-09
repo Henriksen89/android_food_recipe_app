@@ -15,7 +15,6 @@ class MainActivity : AppCompatActivity(), RecipeAdapter.ViewHolderListener  {
     private lateinit var adapter: RecipeAdapter
     private val recipeViewModel: RecipeViewModel by viewModels()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -25,8 +24,6 @@ class MainActivity : AppCompatActivity(), RecipeAdapter.ViewHolderListener  {
         btnFilterRecipe.setOnClickListener {
             bottomSheetFragment.show(supportFragmentManager, "BottomSheetDialog")
         }
-
-
 
         /**
          * Bind s Recycler view with id, and sets variables
@@ -50,9 +47,7 @@ class MainActivity : AppCompatActivity(), RecipeAdapter.ViewHolderListener  {
         recipeViewModel.getRecipes().observe(this, { recipes ->
             adapter.setRecipes(recipes)
         })
-
     }
-
 
     override fun addRecipeOnClick(position: Int, number: Int) {
         TODO("Not yet implemented")
