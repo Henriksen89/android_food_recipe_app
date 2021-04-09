@@ -1,8 +1,11 @@
 package com.example.views
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.food_recipe_app.R
@@ -14,7 +17,7 @@ class MainActivity : AppCompatActivity(), RecipeAdapter.ViewHolderListener  {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: RecipeAdapter
     private val recipeViewModel: RecipeViewModel by viewModels()
-
+    private lateinit var cardview: CardView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +28,6 @@ class MainActivity : AppCompatActivity(), RecipeAdapter.ViewHolderListener  {
         btnFilterRecipe.setOnClickListener {
             bottomSheetFragment.show(supportFragmentManager, "BottomSheetDialog")
         }
-
 
 
         /**
@@ -51,10 +53,17 @@ class MainActivity : AppCompatActivity(), RecipeAdapter.ViewHolderListener  {
             adapter.setRecipes(recipes)
         })
 
+
     }
+
 
 
     override fun addRecipeOnClick(position: Int, number: Int) {
         TODO("Not yet implemented")
+    }
+
+    override fun viewRecipe(position: Int) {
+        val intent = Intent(this, RecipeActivity::class.java)
+        startActivity(intent)
     }
 }
