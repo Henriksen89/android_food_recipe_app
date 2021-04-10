@@ -3,13 +3,13 @@ package com.example.views
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import androidx.activity.viewModels
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.food_recipe_app.R
 import com.example.viewmodels.RecipeViewModel
+import com.example.views.showRecipe.ViewRecipeActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity(), RecipeAdapter.ViewHolderListener  {
     }
 
     override fun viewRecipe(position: Int) {
-        val intent = Intent(this, RecipeActivity::class.java)
+        val intent = Intent(this, ViewRecipeActivity::class.java)
         startActivity(intent)
     }
 }

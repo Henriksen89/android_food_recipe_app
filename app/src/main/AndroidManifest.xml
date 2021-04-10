@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Food_recipe_app" >
         <activity
-            android:name="com.example.views.RecipeActivity"
+            android:name="com.example.views.showRecipe.ViewRecipeActivity"
             android:label="@string/title_activity_recipe"
             android:theme="@style/Theme.Food_recipe_app.NoActionBar" >
         </activity>
