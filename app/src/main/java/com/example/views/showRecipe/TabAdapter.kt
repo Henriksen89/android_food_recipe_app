@@ -15,13 +15,13 @@ class TabAdapter(var context: Context, fm: FragmentManager, var totalTabs: Int) 
     override fun getItem(position: Int): Fragment {
         return when (position){
             0 -> {
-                RecipeOverview()
+                RecipeOverviewFragment()
             }
             1 -> {
-                RecipeIngredients()
+                RecipeIngredientsFragment()
             }
             2 -> {
-                RecipeInstructions()
+                RecipeInstructionsFragment()
             }
 
             else -> getItem(position)
