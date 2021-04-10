@@ -17,7 +17,6 @@ class MainActivity : AppCompatActivity(), RecipeAdapter.ViewHolderListener  {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: RecipeAdapter
     private val recipeViewModel: RecipeViewModel by viewModels()
-    private lateinit var cardview: CardView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

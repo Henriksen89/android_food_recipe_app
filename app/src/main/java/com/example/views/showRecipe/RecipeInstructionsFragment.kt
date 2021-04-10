@@ -13,6 +13,6 @@ class RecipeInstructionsFragment : Fragment(){
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.tab_ingredients_fragment, container, false)
+        return inflater.inflate(R.layout.tab_instructions_fragment, container, false)
     }
 }

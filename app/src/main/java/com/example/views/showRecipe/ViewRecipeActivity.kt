@@ -11,14 +11,13 @@ class ViewRecipeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recipe)
-        val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
         val viewPager: ViewPager = findViewById(R.id.view_pager)
-        viewPager.adapter = sectionsPagerAdapter
         val tabs: TabLayout = findViewById(R.id.tabs)
 
-        tabs.addTab(tabs.newTab().setText("First tab"))
-        tabs.addTab(tabs.newTab().setText("Second tab"))
-        tabs.addTab(tabs.newTab().setText("Third tab"))
+        tabs.addTab(tabs.newTab().setText("Overview"))
+        tabs.addTab(tabs.newTab().setText("Ingredients"))
+        tabs.addTab(tabs.newTab().setText("Instructions"))
+
         tabs.tabGravity = TabLayout.GRAVITY_FILL
 
 
@@ -35,7 +34,7 @@ class ViewRecipeActivity : AppCompatActivity() {
         })
 
 
-        tabs.setupWithViewPager(viewPager)
+        //tabs.setupWithViewPager(viewPager)
 
     }
 }

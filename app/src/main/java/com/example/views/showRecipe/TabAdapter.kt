@@ -12,6 +12,9 @@ class TabAdapter(var context: Context, fm: FragmentManager, var totalTabs: Int) 
         return totalTabs
     }
 
+    /**
+     * Creates the fragment based on the tab index
+     */
     override fun getItem(position: Int): Fragment {
         return when (position){
             0 -> {
