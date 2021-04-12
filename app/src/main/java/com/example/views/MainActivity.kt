@@ -8,14 +8,21 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.food_recipe_app.R
+import com.example.models.Recipe
 import com.example.viewmodels.RecipeViewModel
 import com.example.views.showRecipe.ViewRecipeActivity
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.encodeToJsonElement
+import org.json.JSONObject
 
 
 class MainActivity : AppCompatActivity(), RecipeAdapter.ViewHolderListener  {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: RecipeAdapter
+    private lateinit var bundle : Bundle
     private val recipeViewModel: RecipeViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,7 +34,6 @@ class MainActivity : AppCompatActivity(), RecipeAdapter.ViewHolderListener  {
         btnFilterRecipe.setOnClickListener {
             bottomSheetFragment.show(supportFragmentManager, "BottomSheetDialog")
         }
-
 
         /**
          * Bind s Recycler view with id, and sets variables
@@ -51,18 +57,26 @@ class MainActivity : AppCompatActivity(), RecipeAdapter.ViewHolderListener  {
         recipeViewModel.getRecipes().observe(this, { recipes ->
             adapter.setRecipes(recipes)
         })
-
-
     }
-
 
 
     override fun addRecipeOnClick(position: Int, number: Int) {
         TODO("Not yet implemented")
     }
 
-    override fun viewRecipe(position: Int) {
+    override fun viewRecipe(selectedRecipe: Recipe) {
+        //bundle = Bundle()
+        //val recipe = Gson().toJson(selectedRecipe)
+        //bundle.putSerializable("Recipe", recipe)
+        //println("Selected Recipe " + recipe)
+        //println("encoded into json " + recipe)
+
         val intent = Intent(this, ViewRecipeActivity::class.java)
+        //val recipe = Json.encodeToString(selectedRecipe)
+        println("Recipe encoded " + Json.encodeToString(selectedRecipe))
+        intent.putExtra("Recipe", Gson().toJson(selectedRecipe))
+
+        println("intent " + intent.extras)
         startActivity(intent)
     }
 }

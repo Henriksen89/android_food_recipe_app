@@ -4,8 +4,9 @@ import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import com.example.models.Recipe
 
-class TabAdapter(var context: Context, fm: FragmentManager, var totalTabs: Int) : FragmentPagerAdapter(fm) {
+class TabAdapter(var context: Context, var recipe: Recipe, fm: FragmentManager, var totalTabs: Int) : FragmentPagerAdapter(fm) {
 
 
     override fun getCount(): Int {
@@ -18,13 +19,13 @@ class TabAdapter(var context: Context, fm: FragmentManager, var totalTabs: Int) 
     override fun getItem(position: Int): Fragment {
         return when (position){
             0 -> {
-                RecipeOverviewFragment()
+                RecipeOverviewFragment(recipe)
             }
             1 -> {
-                RecipeIngredientsFragment()
+                RecipeIngredientsFragment(recipe)
             }
             2 -> {
-                RecipeInstructionsFragment()
+                RecipeInstructionsFragment(recipe)
             }
 
             else -> getItem(position)

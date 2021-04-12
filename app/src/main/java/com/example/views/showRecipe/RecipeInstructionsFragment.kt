@@ -6,8 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.food_recipe_app.R
+import com.example.models.Recipe
 
-class RecipeInstructionsFragment : Fragment(){
+class RecipeInstructionsFragment(var recipe: Recipe) : Fragment(){
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

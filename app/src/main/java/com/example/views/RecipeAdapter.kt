@@ -22,7 +22,7 @@ class RecipeAdapter(private val listener: ViewHolderListener) : RecyclerView.Ada
     interface ViewHolderListener{
         // fun deleteRecipeOnClick(position: Int)
         fun addRecipeOnClick(position: Int, number: Int)
-        fun viewRecipe(position: Int)
+        fun viewRecipe(selectedRecipe: Recipe)
     }
 
     private lateinit var recipes: ArrayList<Recipe>
@@ -62,7 +62,7 @@ class RecipeAdapter(private val listener: ViewHolderListener) : RecyclerView.Ada
     override fun getItemCount() = recipes.size
 
     fun recipeView(position: Int, v: View){
-        listener.viewRecipe(position)
+        listener.viewRecipe(recipes[position])
         }
 
 }
