@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.example.models.DietType
 import com.example.models.MealType
 import com.example.repository.MealTypeRepository
+import com.example.views.BottomSheetFragment
 
 class MealTypeViewModel: ViewModel() {
     private val mealTypeRepository: MealTypeRepository = MealTypeRepository()
@@ -21,7 +22,7 @@ class MealTypeViewModel: ViewModel() {
         return mealTypes
     }
 
-    private fun populateMealType(){
+    fun populateMealType(){
         mealTypesList.add(MealType("Main Course"))
         mealTypesList.add(MealType("Side Dishes"))
         mealTypesList.add(MealType("Dessert"))

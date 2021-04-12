@@ -1,3 +1,5 @@
 package com.example.models
 
-data class MealType(val MealType:String)
+import com.google.android.material.chip.Chip
+
+data class MealType(val MealType:CharSequence)
