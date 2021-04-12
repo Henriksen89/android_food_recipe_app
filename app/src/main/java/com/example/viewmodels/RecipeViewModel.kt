@@ -18,8 +18,8 @@ class RecipeViewModel: ViewModel() {
             R.drawable.green_salat,
             R.drawable.vegansk_paprikagryderet)
     private val bottomSheetFragment = BottomSheetFragment()
-    private val mealTypeMainCourse = MealType("Main Course")
-    private val mealTypeSideDish = MealType("Side Dish")
+    private val mealTypeMainCourse = MealType(true, false, false)
+    private val mealTypeSideDish = MealType(false, true, false)
 
 
 
@@ -33,10 +33,10 @@ class RecipeViewModel: ViewModel() {
     }
 
     private fun populateRecipes(){
-        recipeList.add(Recipe(images[1],"RecipeTitle blaaah", "This is a nice dish mateee", mealTypeMainCourse))
-        recipeList.add(Recipe(images[0],"RecipeTitle blaaah", "This is a nice dish mateee", mealTypeMainCourse))
-        recipeList.add(Recipe(images[2],"RecipeTitle blaaah", "This is a nice dish mateee", mealTypeMainCourse))
-        recipeList.add(Recipe(images[2],"RecipeTitle blaaah", "This is a nice dish mateee", mealTypeSideDish))
-        recipeList.add(Recipe(images[2],"RecipeTitle blaaah", "This is a nice dish mateee", mealTypeSideDish))
+       // recipeList.add(Recipe(1, images[0],"RecipeTitle blaaah", "This is a nice dish mateee", mealTypeMainCourse))
+       // recipeList.add(Recipe(2, images[0],"RecipeTitle blaaah", "This is a nice dish mateee", mealTypeMainCourse))
+       // recipeList.add(Recipe(3, images[2],"RecipeTitle blaaah", "This is a nice dish mateee", mealTypeMainCourse))
+       // recipeList.add(Recipe(4, images[2],"RecipeTitle blaaah", "This is a nice dish mateee", mealTypeSideDish))
+       // recipeList.add(Recipe(5, images[2],"RecipeTitle blaaah", "This is a nice dish mateee", mealTypeSideDish))
     }
     }

@@ -1,9 +1,16 @@
 package com.example.models
 
-import android.widget.ImageView
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
-data class Recipe(val image: Int,
-                  val recipeTitle: String,
-                  val recipeDescription: String,
-                  val mealType: MealType,)
-                 // val dietType: DietType)
+@Entity(
+    tableName = "recipes"
+)
+data class Recipe(
+    @PrimaryKey(autoGenerate = true)
+    var id: Int? = null,
+    val image: String,
+    val recipeTitle: String,
+    val recipeDescription: String,
+    val mealType: MealType)
+    //val dietType: DietType)
