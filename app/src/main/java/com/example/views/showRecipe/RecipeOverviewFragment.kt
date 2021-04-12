@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.food_recipe_app.R
 import com.example.models.Recipe
+import kotlinx.android.synthetic.main.bottom_sheet_fragment.*
 
 class RecipeOverviewFragment(var recipe: Recipe) : Fragment(){
     private lateinit var imageView: ImageView
@@ -29,7 +30,11 @@ class RecipeOverviewFragment(var recipe: Recipe) : Fragment(){
     }
 
     fun setUpRecipe(view: View){
-        imageView = view.findViewById<ImageView>(R.id.imageView_overview)
+        imageView = view.findViewById(R.id.imageView_overview)
+        textViewTitle = view.findViewById(R.id.textView_overview_title)
+        textViewDescription = view.findViewById(R.id.textView_overview_description)
         imageView.setImageResource(recipe.image)
+        textViewTitle.text = recipe.recipeTitle
+        textViewDescription.text = recipe.recipeDescription
     }
 }
