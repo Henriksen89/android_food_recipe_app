@@ -6,24 +6,25 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.example.food_recipe_app.R
 import com.example.food_recipe_app.databinding.FragmentRecipeBinding
 import com.example.models.Recipe
 
 class RecipeFragment : Fragment() {
-   // private lateinit var binding: FragmentRecipeBinding
+    private var _binding: FragmentRecipeBinding? = null
+    private val binding get() = _binding!!
    // private lateinit var recipe: Recipe
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-     //   binding.btnFilterRecipe.setOnClickListener{
-            //redirectToBottomSheet()
-        return inflater.inflate(R.layout.fragment_recipe, container, false)
+        _binding = FragmentRecipeBinding.inflate(inflater, container, false)
+
+        binding.btnFilterRecipe.setOnClickListener{
+            findNavController().navigate(R.id.action_recipeFragment_to_bottomSheetFragment)
+        }
+        return binding.root
         }
     }
-
-  //  private fun redirectToBottomSheet() {
-   //     Navigation.findNavController(requireView()).navigate(R.id.action_recipeFragment_to_bottomSheetFragment2)
-   // }
