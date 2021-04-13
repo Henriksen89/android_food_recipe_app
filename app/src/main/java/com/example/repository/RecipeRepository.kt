@@ -20,11 +20,12 @@ class RecipeRepository {
 
     init {
         if (recipies.isEmpty()) {
-            recipeList.add(Recipe(images[1],"RecipeTitle blaaah", "This is a nice dish mateee", mealTypeMainCourse))
-            recipeList.add(Recipe(images[0],"RecipeTitle blaaah", "This is a nice dish mateee", mealTypeMainCourse))
-            recipeList.add(Recipe(images[2],"RecipeTitle blaaah", "This is a nice dish mateee", mealTypeMainCourse))
-            recipeList.add(Recipe(images[2],"RecipeTitle blaaah", "This is a nice dish mateee", mealTypeSideDish))
-            recipeList.add(Recipe(images[2],"RecipeTitle blaaah", "This is a nice dish mateee", mealTypeSideDish))
+            //recipeList.add(Recipe(images[1],"RecipeTitle blaaah", "This is a nice dish mateee", mealTypeMainCourse))
+            recipeList.add(Recipe(images[1],"RecipeTitle blaaah", "This is a nice dish mateee"))
+            recipeList.add(Recipe(images[0],"RecipeTitle blaaah", "This is a nice dish mateee"))
+            recipeList.add(Recipe(images[2],"RecipeTitle blaaah", "This is a nice dish mateee"))
+            recipeList.add(Recipe(images[2],"RecipeTitle blaaah", "This is a nice dish mateee"))
+            recipeList.add(Recipe(images[2],"RecipeTitle blaaah", "This is a nice dish mateee"))
         }
 
     }
