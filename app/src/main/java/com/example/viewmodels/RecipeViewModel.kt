@@ -10,7 +10,7 @@ import com.example.repository.RecipeRepository
 import com.example.views.BottomSheetFragment
 
 class RecipeViewModel: ViewModel() {
-    private val recipeRepository: RecipeRepository = RecipeRepository()
+   // private val recipeRepository: RecipeRepository = RecipeRepository()
     private var recipes = MutableLiveData<ArrayList<Recipe>>()
     private val recipeList = ArrayList<Recipe>()
     private var images: IntArray = intArrayOf(

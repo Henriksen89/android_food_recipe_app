@@ -9,8 +9,9 @@ import androidx.room.PrimaryKey
 data class Recipe(
     @PrimaryKey(autoGenerate = true)
     var id: Int? = null,
-    val image: String,
+    val image: Int,
     val recipeTitle: String,
-    val recipeDescription: String,
-    val mealType: MealType)
+    val recipeDescription: String)
+    //@JvmField
+   // val mealType: MealType)
     //val dietType: DietType)

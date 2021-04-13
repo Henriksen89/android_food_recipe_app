@@ -8,29 +8,26 @@ import com.example.models.Recipe
 
 @Database(
     entities = [Recipe::class],
-    version = 1
+    version = 1,
+    exportSchema = false
 )
 abstract class RecipeDatabase : RoomDatabase() {
-    abstract fun getRecipeDao(): RecipeDao
+    abstract fun recipeDao(): RecipeDao
 
-    companion object{
-        // Volatile - other thread can immediately see when a thread changes this instance
-        // Singleton instance
-        @Volatile
-        private var instance: RecipeDatabase? = null
-        // Make sure that there only is a single instance of our database
-        private val LOCK = Any()
-        // code here cannot be accessed by other threads at the same time
-        operator fun invoke(context: Context) = instance ?: synchronized(LOCK) {
-            instance ?: createDatabase(context).also{ instance = it}
+    companion object {
+        // Singleton to prevent multiple instances from existing
+        private var INSTANCE: RecipeDatabase? = null
+
+        fun getAppDatabase(context: Context): RecipeDatabase? {
+            if (INSTANCE == null) {
+                INSTANCE = Room.databaseBuilder(context.applicationContext, RecipeDatabase::class.java, "recipe-db")
+                    // Allow queries on the main thread.
+                    // Don't do this on a real app!
+                    .allowMainThreadQueries()
+                    .build()
+            }
+            return INSTANCE
         }
-
-        private fun createDatabase(context: Context) =
-            Room.databaseBuilder(
-                context.applicationContext,
-                RecipeDatabase::class.java,
-                "recipe_db.dk"
-            ).build()
     }
 
 }

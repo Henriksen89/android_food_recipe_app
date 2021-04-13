@@ -6,9 +6,8 @@ import com.example.models.Recipe
 
 @Dao
 interface RecipeDao {
-    // onClick define that we one to replace recipe if its exist
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun upsert(recipe: Recipe): Long
+    @Insert
+    fun insert(recipe: Recipe)
 
     // select all from table recipes defined on out model class
     @Query("SELECT * FROM recipes")

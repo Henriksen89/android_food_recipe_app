@@ -6,16 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.food_recipe_app.R
 import com.example.models.DietType
-import com.example.models.MealType
-import com.example.viewmodels.MealTypeViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.chip.Chip
-import kotlinx.android.synthetic.main.bottom_sheet_fragment.*
+import kotlinx.android.synthetic.main.fragment_bottom_sheet.*
 
 class BottomSheetFragment : BottomSheetDialogFragment() {
     private val mealTypes = ArrayList<CharSequence>()
@@ -28,7 +25,7 @@ class BottomSheetFragment : BottomSheetDialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.bottom_sheet_fragment, container, false)
+        val root = inflater.inflate(R.layout.fragment_bottom_sheet, container, false)
         val btnApply : Button = root.findViewById(R.id.btn_apply)
 
         btnApply.setOnClickListener{

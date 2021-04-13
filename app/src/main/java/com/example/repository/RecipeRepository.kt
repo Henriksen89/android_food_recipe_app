@@ -1,18 +1,18 @@
 package com.example.repository
 
+import com.example.db.RecipeDao
+import com.example.db.RecipeDatabase
 import com.example.models.Recipe
 
-class RecipeRepository {
-    private val recipies: MutableList<Recipe> = ArrayList()
+class RecipeRepository(private val recipeDao: RecipeDao) {
 
-    init {
-        if (recipies.isEmpty()) {
-            //recipies.add(Recipe("Suppe"))
-            //recipies.add(Recipe("Bræk"))
-        }
+    fun insert(recipe: Recipe){
+        recipeDao.insert(recipe)
     }
 
-    fun fetchRecipe(): Recipe {
-        return recipies.random()
-    }
+
+    fun getSavedRecipes() = recipeDao.getAllRecipes()
+
+    suspend fun deleteRecipe(recipe: Recipe) = recipeDao.deleteRecipe(recipe)
+
 }

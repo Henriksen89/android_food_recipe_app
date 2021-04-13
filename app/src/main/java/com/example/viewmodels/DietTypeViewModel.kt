@@ -4,11 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.models.DietType
-import com.example.models.Recipe
-import com.example.repository.DietTypeRepository
 
 class DietTypeViewModel: ViewModel() {
-    private val dietTypeRepository: DietTypeRepository = DietTypeRepository()
+  //  private val dietTypeRepository: DietTypeRepository = DietTypeRepository()
     private var dietTypes = MutableLiveData<ArrayList<DietType>>()
     private val dietTypesList = ArrayList<DietType>()
 

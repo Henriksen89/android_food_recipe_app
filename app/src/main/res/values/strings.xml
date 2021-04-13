@@ -12,4 +12,6 @@
     <string name="chicken">Chicken</string>
     <string name="vegetarian">Vegetarian</string>
     <string name="gluten_free">Gluten Free</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
