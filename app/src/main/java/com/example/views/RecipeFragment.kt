@@ -9,28 +9,21 @@ import androidx.navigation.Navigation
 import com.example.food_recipe_app.R
 import com.example.food_recipe_app.databinding.FragmentRecipeBinding
 import com.example.models.Recipe
-import kotlinx.android.synthetic.main.fragment_recipe.*
 
 class RecipeFragment : Fragment() {
-    private lateinit var binding: FragmentRecipeBinding
-    private lateinit var recipe: Recipe
-
-
+   // private lateinit var binding: FragmentRecipeBinding
+   // private lateinit var recipe: Recipe
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding.btnFilterRecipe.setOnClickListener{
-            redirectToBottomSheet()
-        }
-
-
-        // Inflate the layout for this fragment
+     //   binding.btnFilterRecipe.setOnClickListener{
+            //redirectToBottomSheet()
         return inflater.inflate(R.layout.fragment_recipe, container, false)
+        }
     }
 
-    private fun redirectToBottomSheet() {
-        Navigation.findNavController(requireView()).navigate(R.id.action_recipeFragment_to_bottomSheetFragment2)
-    }
-}
+  //  private fun redirectToBottomSheet() {
+   //     Navigation.findNavController(requireView()).navigate(R.id.action_recipeFragment_to_bottomSheetFragment2)
+   // }

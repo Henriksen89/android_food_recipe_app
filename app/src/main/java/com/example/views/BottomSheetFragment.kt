@@ -43,11 +43,8 @@ class BottomSheetFragment : BottomSheetDialogFragment() {
     }
 
     private fun registerFilterChange() {
-        val ids = chip_group.checkedChipIds
+        mealTypes.add(chip_group.findViewById<Chip>(id).text)
 
-        ids.forEach { id ->
-            mealTypes.add(chip_group.findViewById<Chip>(id).text)
-        }
 
         println(mealTypes)
     }
