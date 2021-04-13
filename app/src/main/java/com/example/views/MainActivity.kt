@@ -59,24 +59,13 @@ class MainActivity : AppCompatActivity(), RecipeAdapter.ViewHolderListener  {
         })
     }
 
-
     override fun addRecipeOnClick(position: Int, number: Int) {
         TODO("Not yet implemented")
     }
 
     override fun viewRecipe(selectedRecipe: Recipe) {
-        //bundle = Bundle()
-        //val recipe = Gson().toJson(selectedRecipe)
-        //bundle.putSerializable("Recipe", recipe)
-        //println("Selected Recipe " + recipe)
-        //println("encoded into json " + recipe)
-
         val intent = Intent(this, ViewRecipeActivity::class.java)
-        //val recipe = Json.encodeToString(selectedRecipe)
-        println("Recipe encoded " + Json.encodeToString(selectedRecipe))
         intent.putExtra("Recipe", Gson().toJson(selectedRecipe))
-
-        println("intent " + intent.extras)
         startActivity(intent)
     }
 }

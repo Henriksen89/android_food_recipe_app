@@ -4,7 +4,13 @@
     <string name="textview">TextView</string>
     <string name="filter_recipe">Filter recipe</string>
     <string name="title_activity_recipe">Recipe</string>
-    <string name="tab_text_1">OVERVIEW</string>
-    <string name="tab_text_2">INGREDIENTS</string>
-    <string name="tab_text_3">INSTRUCTIONS</string>
+    <string name="meal_type">Meal Type</string>
+    <string name="main_course">Main Course</string>
+    <string name="side_dish">Side Dish</string>
+    <string name="dessert">Dessert</string>
+    <string name="diet_type">Diet Type</string>
+    <string name="apply">Apply</string>
+    <string name="chicken">Chicken</string>
+    <string name="vegetarian">Vegetarian</string>
+    <string name="gluten_free">Gluten Free</string>
 </resources>
