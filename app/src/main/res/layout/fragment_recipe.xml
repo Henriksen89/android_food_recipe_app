@@ -27,6 +27,7 @@
 
         <Button
             android:id="@+id/btnFilterRecipe"
+            android:icon="@drawable/ic_food_bank"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/round_button"
