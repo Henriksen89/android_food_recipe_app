@@ -9,8 +9,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.food_recipe_app.R
 import com.example.models.Recipe
+import com.example.views.RecipeFragment
 
-class RecipeAdapter(private val listener: ViewHolderListener) : RecyclerView.Adapter<RecipeAdapter.ViewHolder>() {
+class RecipeAdapter(private val listener: RecipeFragment) : RecyclerView.Adapter<RecipeAdapter.ViewHolder>() {
 
     inner class ViewHolder(frameLayout: View?,
                      val imageView: ImageView,

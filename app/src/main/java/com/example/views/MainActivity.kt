@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity()  {
        // recipeViewModel.repository = (application as RecipeApplication).repository
         setContentView(R.layout.activity_main)
 
+
         navController = findNavController(R.id.navHostFragment)
         val appBarConfiguration = AppBarConfiguration(
             setOf(
