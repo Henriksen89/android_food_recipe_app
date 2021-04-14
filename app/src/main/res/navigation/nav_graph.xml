@@ -28,6 +28,20 @@
         android:name="com.example.food_recipe_app.FragmentFavorites"
         android:label="Favorites"
         tools:layout="@layout/fragment_favorites" />
+    <fragment
+        android:id="@+id/recipeIngredientsFragment"
+        android:name="com.example.views.showRecipe.RecipeIngredientsFragment"
+        android:label="RecipeIngredientsFragment" />
+    <fragment
+        android:id="@+id/recipeInstructionsFragment"
+        android:name="com.example.views.showRecipe.RecipeInstructionsFragment"
+        android:label="fragment_recipe_instructions"
+        tools:layout="@layout/fragment_recipe_instructions" />
+    <fragment
+        android:id="@+id/recipeOverviewFragment"
+        android:name="com.example.views.showRecipe.RecipeOverviewFragment"
+        android:label="fragment_recipe_overview"
+        tools:layout="@layout/fragment_recipe_overview" />
 
 
 </navigation>
