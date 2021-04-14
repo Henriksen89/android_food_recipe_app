@@ -12,7 +12,7 @@ import com.example.food_recipe_app.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity : AppCompatActivity(), RecipeAdapter.ViewHolderListener  {
+class MainActivity : AppCompatActivity()  {
     private lateinit var navController: NavController
    // private val recipeViewModel: RViewModel by viewModels()
 
@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity(), RecipeAdapter.ViewHolderListener  {
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
+
 
 
 }
