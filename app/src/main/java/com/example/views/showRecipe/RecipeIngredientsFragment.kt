@@ -11,7 +11,7 @@ import com.example.food_recipe_app.databinding.FragmentRecipeBinding
 import com.example.food_recipe_app.databinding.FragmentRecipeIngredientsBinding
 import com.example.models.Recipe
 
-class RecipeIngredientsFragment(var recipe: Recipe) : Fragment(){
+class RecipeIngredientsFragment() : Fragment(){
     private lateinit var imageView: ImageView
     private var _binding: FragmentRecipeIngredientsBinding? = null
     private val binding get() = _binding!!

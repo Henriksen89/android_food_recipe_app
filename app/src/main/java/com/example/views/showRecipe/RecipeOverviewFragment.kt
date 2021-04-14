@@ -29,9 +29,9 @@ class RecipeOverviewFragment() : Fragment(){
     }
 
     fun setUpRecipe(view: View){
-        imageView = view.findViewById(R.id.imageView_overview)
-        textViewTitle = view.findViewById(R.id.textView_overview_title)
-        textViewDescription = view.findViewById(R.id.textView_overview_description)
+        //imageView = view.findViewById(R.id.imageView_overview)
+        //textViewTitle = view.findViewById(R.id.textView_overview_title)
+        //textViewDescription = view.findViewById(R.id.textView_overview_description)
         //imageView.setImageResource(recipe.image)
         //textViewTitle.text = recipe.recipeTitle
         //textViewDescription.text = recipe.recipeDescription

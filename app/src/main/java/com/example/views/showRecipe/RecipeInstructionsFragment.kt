@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import com.example.food_recipe_app.R
 import com.example.models.Recipe
 
-class RecipeInstructionsFragment(var recipe: Recipe) : Fragment(){
+class RecipeInstructionsFragment() : Fragment(){
     private lateinit var imageView: ImageView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
