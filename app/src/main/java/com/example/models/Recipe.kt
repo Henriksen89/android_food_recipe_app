@@ -7,11 +7,18 @@ import androidx.room.PrimaryKey
     tableName = "recipes"
 )
 data class Recipe(
+    @JvmField
     @PrimaryKey(autoGenerate = true)
     var id: Int? = null,
-    val image: Int,
-    val recipeTitle: String,
-    val recipeDescription: String)
+
+    @JvmField
+    var image: Int,
+
+    @JvmField
+    var recipeTitle: String,
+
+    @JvmField
+    var recipeDescription: String)
     //@JvmField
    // val mealType: MealType)
     //val dietType: DietType)

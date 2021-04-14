@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import com.example.food_recipe_app.R
 import com.example.models.Recipe
 
-class RecipeOverviewFragment(var recipe: Recipe) : Fragment(){
+class RecipeOverviewFragment() : Fragment(){
     private lateinit var imageView: ImageView
     private lateinit var textViewTitle: TextView
     private lateinit var textViewDescription: TextView
@@ -32,8 +32,8 @@ class RecipeOverviewFragment(var recipe: Recipe) : Fragment(){
         imageView = view.findViewById(R.id.imageView_overview)
         textViewTitle = view.findViewById(R.id.textView_overview_title)
         textViewDescription = view.findViewById(R.id.textView_overview_description)
-        imageView.setImageResource(recipe.image)
-        textViewTitle.text = recipe.recipeTitle
-        textViewDescription.text = recipe.recipeDescription
+        //imageView.setImageResource(recipe.image)
+        //textViewTitle.text = recipe.recipeTitle
+        //textViewDescription.text = recipe.recipeDescription
     }
 }

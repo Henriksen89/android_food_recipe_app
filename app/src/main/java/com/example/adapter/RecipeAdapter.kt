@@ -45,7 +45,7 @@ class RecipeAdapter(private val listener: ViewHolderListener) : RecyclerView.Ada
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.fragment_card_view, viewGroup, false)
+        val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.fragment_card, viewGroup, false)
         val textViewTitle = view.findViewById<TextView>(R.id.recipeTextViewTitle)
         val textViewDescription = view.findViewById<TextView>(R.id.recipeTextViewDescription)
         val imageView = view.findViewById<ImageView>(R.id.recipeImageView)

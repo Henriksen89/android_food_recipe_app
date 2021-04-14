@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_recipeFragment_to_bottomSheetFragment"
             app:destination="@id/bottomSheetFragment" />
+        <action
+            android:id="@+id/action_recipeFragment_to_cardFragment"
+            app:destination="@id/cardFragment" />
     </fragment>
 
     <dialog
@@ -25,7 +28,7 @@
     </dialog>
     <fragment
         android:id="@+id/fragmentFavorites"
-        android:name="com.example.food_recipe_app.FragmentFavorites"
+        android:name="com.example.views.FragmentFavorites"
         android:label="Favorites"
         tools:layout="@layout/fragment_favorites" />
     <fragment
@@ -42,6 +45,15 @@
         android:name="com.example.views.showRecipe.RecipeOverviewFragment"
         android:label="fragment_recipe_overview"
         tools:layout="@layout/fragment_recipe_overview" />
+    <fragment
+        android:id="@+id/cardFragment"
+        android:name="com.example.views.CardFragment"
+        android:label="fragment_card"
+        tools:layout="@layout/fragment_card" >
+        <action
+            android:id="@+id/action_cardFragment_to_recipeOverviewFragment"
+            app:destination="@id/recipeOverviewFragment" />
+    </fragment>
 
 
 </navigation>

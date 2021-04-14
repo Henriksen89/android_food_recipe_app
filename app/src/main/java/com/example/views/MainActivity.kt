@@ -7,11 +7,12 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.adapter.RecipeAdapter
 import com.example.food_recipe_app.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity : AppCompatActivity()  {
+class MainActivity : AppCompatActivity(), RecipeAdapter.ViewHolderListener  {
     private lateinit var navController: NavController
    // private val recipeViewModel: RViewModel by viewModels()
 
@@ -33,4 +34,6 @@ class MainActivity : AppCompatActivity()  {
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
+
+
 }
