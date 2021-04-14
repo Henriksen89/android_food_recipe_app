@@ -8,11 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.food_recipe_app.R
 import com.example.models.Recipe
 import com.google.gson.Gson
-import kotlinx.android.synthetic.main.activity_main.view.*
-import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.JsonObject
-import kotlinx.serialization.json.decodeFromJsonElement
+
 
 class ViewRecipeActivity : AppCompatActivity() {
 
