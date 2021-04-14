@@ -11,8 +11,11 @@ interface RecipeDao {
 
     // select all from table recipes defined on out model class
     @Query("SELECT * FROM recipes")
-    fun getAllRecipes(): LiveData<List<Recipe>>
+    fun getAllRecipes(): Recipe
 
     @Delete
     suspend fun deleteRecipe(recipe: Recipe)
+
+    @Query("SELECT COUNT(*) from recipes")
+    fun countRecipes(): Int
 }
