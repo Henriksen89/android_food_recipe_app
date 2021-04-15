@@ -20,7 +20,6 @@ abstract class RecipeDatabase : RoomDatabase() {
         private var INSTANCE: RecipeDatabase? = null
 
         fun getAppDatabase(context: Context): RecipeDatabase? {
-            println("context:" + context)
             synchronized(this) {
                 if(INSTANCE == null){
                     INSTANCE = Room.databaseBuilder(

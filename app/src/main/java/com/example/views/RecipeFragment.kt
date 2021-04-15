@@ -27,11 +27,6 @@ class RecipeFragment : Fragment() {
     ): View? {
         _binding = FragmentRecipeBinding.inflate(inflater, container, false)
 
-       // binding.RecyclerView.layoutManager.apply {
-       //     requireView().findViewById<CardView>(R.id.card_view)
-       // }
-
-
         binding.btnFilterRecipe.setOnClickListener{
             findNavController().navigate(R.id.action_recipeFragment_to_bottomSheetFragment)
         }
@@ -44,17 +39,8 @@ class RecipeFragment : Fragment() {
         adapter = RecipeAdapter(this)
         adapter.setRecipes(recipeViewModel.getRecipes().value!!)
         recyclerView.adapter = adapter
-        //findNavController().navigate(R.id.action_recipeFragment_to_cardFragment)
 
         return binding.root
         }
 
-        }
-
-    //private fun setupRecyclerView(){
-       // binding.RecyclerView.adapter = recipeAdapter
-      //  binding.RecyclerView.layoutManager = LinearLayoutManager(requireContext())
-
-       // recipeAdapter.setRecipes(recipeViewModel.getRecipes().value!!)
-    //}
-
+}

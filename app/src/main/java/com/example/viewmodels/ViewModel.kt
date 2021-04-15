@@ -6,7 +6,7 @@ import com.example.food_recipe_app.R
 import com.example.models.Recipe
 import com.example.repository.RecipeRepository
 
-class ViewModel: ViewModel() {
+class ViewModel(): ViewModel() {
     private lateinit var recipe: Recipe
     lateinit var repository: RecipeRepository
     var currentRecipe: Recipe? = null

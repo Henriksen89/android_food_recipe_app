@@ -1,17 +1,17 @@
 package com.example.viewmodels
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.*
+import com.example.db.RecipeDatabase
 import com.example.food_recipe_app.R
 import com.example.models.MealType
 import com.example.models.Recipe
 import com.example.repository.RecipeRepository
-import com.example.views.BottomSheetFragment
+import kotlinx.coroutines.launch
 
-class RecipeViewModel: ViewModel() {
-   // private val recipeRepository: RecipeRepository = RecipeRepository()
-    private var recipes = MutableLiveData<ArrayList<Recipe>>()
+class RecipeViewModel(application: Application): AndroidViewModel(application) {
+    private val repository: RecipeRepository
+    private var reci = MutableLiveData<ArrayList<Recipe>>()
     private val recipeList = ArrayList<Recipe>()
     private var images: IntArray = intArrayOf(
             R.drawable.bulgogi_burgers,
@@ -20,16 +20,41 @@ class RecipeViewModel: ViewModel() {
     private val mealTypeMainCourse = MealType(true, false, false)
     private val mealTypeSideDish = MealType(false, true, false)
 
-
-
     init {
+        val dao = RecipeDatabase.getAppDatabase(application)!!.recipeDao
+        repository = RecipeRepository(dao)
+
+        val recipes = listOf(
+            Recipe("Hotdog", "NamNam"),
+            Recipe("Burger", "Salat")
+        )
+
+        recipes.forEach { insert(it) }
+
+        val recipe = getReciTest()
+        println("reciTest" + recipe)
+
         populateRecipes()
-        recipes.value = recipeList
+        reci.value = recipeList
+
+        println(dao.getRecipe("Hotdog"))
+        }
+
+    fun insert(recipe: Recipe){
+        viewModelScope.launch {
+            repository.insert(recipe)
+        }
+    }
+    fun getReciTest(){
+        viewModelScope.launch {
+            repository.getRecipe().toString()
+        }
     }
 
     fun getRecipes() : LiveData<ArrayList<Recipe>>{
-        return recipes
+        return reci
     }
+
 
     private fun populateRecipes(){
        recipeList.add(Recipe("RecipeTitle blaaah", "This is a nice dish mateee"))

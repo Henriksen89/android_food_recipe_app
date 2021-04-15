@@ -9,6 +9,11 @@ interface RecipeDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(recipe: Recipe)
 
+
+    @Transaction
+    @Query("SELECT * FROM recipe WHERE recipeTitle=:recipeTitle")
+    fun getRecipe(recipeTitle: String): List<Recipe>
+
     // select all from table recipes defined on out model class
    // @Query("SELECT * FROM recipes")
     //fun getAllRecipes(): Recipe
