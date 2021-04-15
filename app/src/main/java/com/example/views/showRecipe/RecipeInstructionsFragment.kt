@@ -17,7 +17,7 @@ class RecipeInstructionsFragment() : Fragment(){
     ): View? {
         // Inflate the layout for this fragment
         val view : View = inflater.inflate(R.layout.fragment_recipe_instructions, container, false)
-        setUpRecipe(view)
+        //setUpRecipe(view)
         return view
     }
 

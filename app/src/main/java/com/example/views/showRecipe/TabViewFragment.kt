@@ -1,15 +1,19 @@
 package com.example.views.showRecipe
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.get
+import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
-import com.example.adapter.RecipeAdapter
+import androidx.viewpager.widget.ViewPager
 import com.example.food_recipe_app.R
-import com.example.food_recipe_app.databinding.FragmentRecipeBinding
 import com.example.food_recipe_app.databinding.FragmentTabViewBinding
+import com.google.android.material.tabs.TabLayout
+import kotlinx.android.synthetic.main.fragment_tab_view.*
+
 
 class TabViewFragment : Fragment() {
     private var _binding: FragmentTabViewBinding? = null
@@ -21,18 +25,55 @@ class TabViewFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentTabViewBinding.inflate(inflater, container, false)
+        val viewPager: ViewPager = binding.viewPager
+        val tabLayout: TabLayout = binding.tabs
 
 
-        binding.tab1.setOnClickListener{
-            findNavController().navigate(R.id.action_tabViewFragment_to_recipeOverviewFragment)
-        }
-        binding.tab2.setOnClickListener{
-            findNavController().navigate(R.id.action_tabViewFragment_to_recipeInstructionsFragment)
-        }
+        val tabOverview: TabLayout.Tab = tabLayout.newTab().setText("Overview")
+        tabLayout.addTab(tabOverview)
+        val tabIngredients: TabLayout.Tab = tabLayout.newTab().setText("Ingredients")
+        tabLayout.addTab(tabIngredients)
+        val tabInstructions: TabLayout.Tab = tabLayout.newTab().setText("Instructions")
+        tabLayout.addTab(tabInstructions)
 
-        binding.tab3.setOnClickListener{
-            findNavController().navigate(R.id.action_tabViewFragment_to_recipeIngredientsFragment)
-        }
+        println("tabcount " + tabLayout.tabCount)
+        println("tabindex 0 " + tabLayout[0])
+
+
+
+        val mViewPager = binding.viewPager
+        mViewPager.adapter = TabAdapter(this.activity as TabViewActivity, childFragmentManager, tabs.tabCount, findNavController())
+
+        /*val adapter = TabAdapter(
+            this.activity as TabViewActivity,
+            supportFragmentManager,
+            tabs.tabCount,
+            Navigation.findNavController(binding.findViewById(R.layout.fragment_tab_view))
+        )
+        viewPager.adapter = adapter
+        viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabs))*/
+
+
+
+        //println("navcontroller dist " + navController.currentDestination?.id)
+        println("tabViewFragment id " + R.id.tabViewFragment)
+        viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabs))
+
+        tabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                if (tab != null) {
+                    viewPager.currentItem = tab.position
+                }
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+                println("unselected")
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+                println("reselected")
+            }
+        })
 
         return binding.root
     }

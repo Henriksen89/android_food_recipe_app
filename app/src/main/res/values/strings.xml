@@ -17,4 +17,7 @@
     <string name="favorites_fragment">Favorites</string>
     <string name="recipe_overview_fragment">recipe_overview_fragment</string>
     <string name="recipe_instructions_fragment" />
+    <string name="overview">Overview</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="instructions">Instructions</string>
 </resources>

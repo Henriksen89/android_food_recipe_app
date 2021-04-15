@@ -32,43 +32,24 @@
         android:label="Favorites"
         tools:layout="@layout/fragment_favorites" />
     <fragment
-        android:id="@+id/recipeIngredientsFragment"
-        android:name="com.example.views.showRecipe.RecipeIngredientsFragment"
-        android:label="RecipeIngredientsFragment" />
-    <fragment
-        android:id="@+id/recipeInstructionsFragment"
-        android:name="com.example.views.showRecipe.RecipeInstructionsFragment"
-        android:label="fragment_recipe_instructions"
-        tools:layout="@layout/fragment_recipe_instructions" />
-    <fragment
-        android:id="@+id/recipeOverviewFragment"
-        android:name="com.example.views.showRecipe.RecipeOverviewFragment"
-        android:label="fragment_recipe_overview"
-        tools:layout="@layout/fragment_recipe_overview" />
-    <fragment
         android:id="@+id/cardFragment"
         android:name="com.example.views.CardFragment"
         android:label="fragment_card"
         tools:layout="@layout/fragment_card" >
         <action
-            android:id="@+id/action_cardFragment_to_tabViewFragment"
-            app:destination="@id/tabViewFragment" />
+            android:id="@+id/action_cardFragment_to_tabViewActivity"
+            app:destination="@id/tabViewActivity" />
     </fragment>
     <fragment
         android:id="@+id/tabViewFragment"
         android:name="com.example.views.showRecipe.TabViewFragment"
         android:label="fragment_tab_view"
-        tools:layout="@layout/fragment_tab_view" >
-        <action
-            android:id="@+id/action_tabViewFragment_to_recipeOverviewFragment"
-            app:destination="@id/recipeOverviewFragment" />
-        <action
-            android:id="@+id/action_tabViewFragment_to_recipeInstructionsFragment"
-            app:destination="@id/recipeInstructionsFragment" />
-        <action
-            android:id="@+id/action_tabViewFragment_to_recipeIngredientsFragment"
-            app:destination="@id/recipeIngredientsFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_tab_view" />
+    <activity
+        android:id="@+id/tabViewActivity"
+        android:name="com.example.views.showRecipe.TabViewActivity"
+        android:label="activity_tab_view"
+        tools:layout="@layout/activity_tab_view" />
 
 
 </navigation>
