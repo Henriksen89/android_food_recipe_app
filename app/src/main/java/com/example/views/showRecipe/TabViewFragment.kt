@@ -27,38 +27,24 @@ class TabViewFragment : Fragment() {
         _binding = FragmentTabViewBinding.inflate(inflater, container, false)
         val viewPager: ViewPager = binding.viewPager
         val tabLayout: TabLayout = binding.tabs
-
-
-        val tabOverview: TabLayout.Tab = tabLayout.newTab().setText("Overview")
-        tabLayout.addTab(tabOverview)
-        val tabIngredients: TabLayout.Tab = tabLayout.newTab().setText("Ingredients")
-        tabLayout.addTab(tabIngredients)
-        val tabInstructions: TabLayout.Tab = tabLayout.newTab().setText("Instructions")
-        tabLayout.addTab(tabInstructions)
-
-        println("tabcount " + tabLayout.tabCount)
-        println("tabindex 0 " + tabLayout[0])
-
-
-
         val mViewPager = binding.viewPager
+
+        createTabs(tabLayout)
+
+        setViewPagerListener(mViewPager, tabLayout, viewPager)
+
+        tabListener(tabLayout, viewPager)
+
+        return binding.root
+    }
+
+    private fun setViewPagerListener(mViewPager: ViewPager, tabLayout: TabLayout, viewPager: ViewPager) {
         mViewPager.adapter = TabAdapter(this, childFragmentManager, tabLayout.tabCount, findNavController())
 
-        /*val adapter = TabAdapter(
-            this.activity as TabViewActivity,
-            supportFragmentManager,
-            tabs.tabCount,
-            Navigation.findNavController(binding.findViewById(R.layout.fragment_tab_view))
-        )
-        viewPager.adapter = adapter
-        viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabs))*/
-
-
-
-        //println("navcontroller dist " + navController.currentDestination?.id)
-        println("tabViewFragment id " + R.id.tabViewFragment)
         viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayout))
+    }
 
+    private fun tabListener(tabLayout: TabLayout, viewPager: ViewPager) {
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 if (tab != null) {
@@ -66,15 +52,17 @@ class TabViewFragment : Fragment() {
                 }
             }
 
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
-                println("unselected")
-            }
-
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-                println("reselected")
-            }
+            override fun onTabUnselected(tab: TabLayout.Tab?) {}
+            override fun onTabReselected(tab: TabLayout.Tab?) {}
         })
+    }
 
-        return binding.root
+    private fun createTabs(tabLayout: TabLayout){
+        val tabOverview: TabLayout.Tab = tabLayout.newTab().setText("Overview")
+        tabLayout.addTab(tabOverview)
+        val tabIngredients: TabLayout.Tab = tabLayout.newTab().setText("Ingredients")
+        tabLayout.addTab(tabIngredients)
+        val tabInstructions: TabLayout.Tab = tabLayout.newTab().setText("Instructions")
+        tabLayout.addTab(tabInstructions)
     }
 }
