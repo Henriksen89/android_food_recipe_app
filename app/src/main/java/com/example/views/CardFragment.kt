@@ -27,7 +27,7 @@ class CardFragment : Fragment() {
 
 
         bindingCard.cardView.setOnClickListener{
-            findNavController().navigate(R.id.action_cardFragment_to_tabViewActivity)
+            findNavController().navigate(R.id.action_cardFragment_to_tabViewFragment)
         }
 
         return bindingCard.root

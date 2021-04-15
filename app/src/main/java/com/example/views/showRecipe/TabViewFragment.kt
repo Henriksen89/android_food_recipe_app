@@ -42,7 +42,7 @@ class TabViewFragment : Fragment() {
 
 
         val mViewPager = binding.viewPager
-        mViewPager.adapter = TabAdapter(this.activity as TabViewActivity, childFragmentManager, tabs.tabCount, findNavController())
+        mViewPager.adapter = TabAdapter(this, childFragmentManager, tabLayout.tabCount, findNavController())
 
         /*val adapter = TabAdapter(
             this.activity as TabViewActivity,
@@ -57,9 +57,9 @@ class TabViewFragment : Fragment() {
 
         //println("navcontroller dist " + navController.currentDestination?.id)
         println("tabViewFragment id " + R.id.tabViewFragment)
-        viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabs))
+        viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayout))
 
-        tabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 if (tab != null) {
                     viewPager.currentItem = tab.position

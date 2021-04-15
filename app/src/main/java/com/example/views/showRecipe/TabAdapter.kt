@@ -7,7 +7,7 @@ import androidx.navigation.NavController
 import com.example.food_recipe_app.R
 import com.example.models.Recipe
 
-class TabAdapter(var context: TabViewActivity, fm: FragmentManager, var totalTabs: Int, navController: NavController) : FragmentPagerAdapter(fm) {
+class TabAdapter(var context: TabViewFragment, fm: FragmentManager, var totalTabs: Int, navController: NavController) : FragmentPagerAdapter(fm) {
     private val navController = navController
 
     override fun getCount(): Int {
