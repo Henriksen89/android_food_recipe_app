@@ -6,17 +6,17 @@ import com.example.models.Recipe
 
 class RecipeRepository(private val recipeDao: RecipeDao) {
 
-    fun insert(recipe: Recipe){
+    suspend fun insert(recipe: Recipe){
         recipeDao.insert(recipe)
     }
 
 
-    fun getSavedRecipes() = recipeDao.getAllRecipes()
+   // fun getSavedRecipes() = recipeDao.getAllRecipes()
 
     suspend fun deleteRecipe(recipe: Recipe) = recipeDao.deleteRecipe(recipe)
 
-    fun count(): Int {
-        return recipeDao.countRecipes()
-    }
+   // fun count(): Int {
+    //    return recipeDao.countRecipes()
+   // }
 
 }

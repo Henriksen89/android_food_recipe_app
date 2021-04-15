@@ -6,5 +6,5 @@ import com.example.repository.RecipeRepository
 
 class RecipeApplication: Application() {
     val database by lazy {RecipeDatabase.getAppDatabase(this)}
-    val repository by lazy {RecipeRepository(database!!.recipeDao())}
+    val repository by lazy {RecipeRepository(database!!.recipeDao)}
 }

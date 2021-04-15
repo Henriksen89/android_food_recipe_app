@@ -1,5 +1,6 @@
 package com.example.db
 
+
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
@@ -8,26 +9,32 @@ import com.example.models.Recipe
 
 @Database(
     entities = [Recipe::class],
-    version = 1,
-    exportSchema = false
+    version = 1
 )
 abstract class RecipeDatabase : RoomDatabase() {
-    abstract fun recipeDao(): RecipeDao
+    abstract val recipeDao: RecipeDao
 
     companion object {
         // Singleton to prevent multiple instances from existing
+        @Volatile
         private var INSTANCE: RecipeDatabase? = null
 
         fun getAppDatabase(context: Context): RecipeDatabase? {
-            if (INSTANCE == null) {
-                INSTANCE = Room.databaseBuilder(context.applicationContext, RecipeDatabase::class.java, "recipe-db")
-                    // Allow queries on the main thread.
-                    // Don't do this on a real app!
-                    .allowMainThreadQueries()
-                    .build()
+            println("context:" + context)
+            synchronized(this) {
+                if(INSTANCE == null){
+                    INSTANCE = Room.databaseBuilder(
+                        context.applicationContext,
+                        RecipeDatabase::class.java,
+                        "recipe-db")
+                        .allowMainThreadQueries()
+                        .build().also {
+                            INSTANCE = it
+                        }
+
+                }
             }
-            return INSTANCE
+            return INSTANCE!!
         }
     }
-
 }
