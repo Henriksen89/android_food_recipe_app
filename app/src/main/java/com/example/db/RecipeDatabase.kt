@@ -5,11 +5,14 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.models.MealType
 import com.example.models.Recipe
 
 @Database(
-    entities = [Recipe::class],
-    version = 1
+    entities = [
+        Recipe::class,
+        MealType::class],
+    version = 4
 )
 abstract class RecipeDatabase : RoomDatabase() {
     abstract val recipeDao: RecipeDao
@@ -26,6 +29,7 @@ abstract class RecipeDatabase : RoomDatabase() {
                         context.applicationContext,
                         RecipeDatabase::class.java,
                         "recipe-db")
+                        .fallbackToDestructiveMigration()
                         .allowMainThreadQueries()
                         .build().also {
                             INSTANCE = it

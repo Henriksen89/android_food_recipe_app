@@ -4,6 +4,7 @@ import androidx.room.Query
 import androidx.room.Transaction
 import com.example.db.RecipeDao
 import com.example.db.RecipeDatabase
+import com.example.models.MealType
 import com.example.models.Recipe
 
 class RecipeRepository(private val recipeDao: RecipeDao) {
@@ -11,7 +12,13 @@ class RecipeRepository(private val recipeDao: RecipeDao) {
         recipeDao.insert(recipe)
     }
 
-    fun getRecipe() = recipeDao.getRecipe("recipeTitle")
+    suspend fun insertMealType(mealType: MealType){
+        recipeDao.insertMealType(mealType)
+    }
+
+    suspend fun getRecipe() = recipeDao.getRecipe("recipeTitle")
+
+    suspend fun getRecipeWithMealType() = recipeDao.getRecipeMealType("mealType")
 
     suspend fun deleteRecipe(recipe: Recipe) = recipeDao.deleteRecipe(recipe)
 

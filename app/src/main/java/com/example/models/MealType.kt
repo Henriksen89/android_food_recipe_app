@@ -1,8 +1,9 @@
 package com.example.models
 
-import com.google.android.material.chip.Chip
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
+@Entity
 data class MealType(
-    val mainCourse:Boolean,
-    val sideDish:Boolean,
-    val Dessert:Boolean)
+    @PrimaryKey(autoGenerate = false)
+    val mealType: String)

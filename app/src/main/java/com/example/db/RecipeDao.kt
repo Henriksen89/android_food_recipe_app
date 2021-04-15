@@ -2,6 +2,8 @@ package com.example.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.example.models.MealType
+import com.example.models.MealTypeWithRecipe
 import com.example.models.Recipe
 
 @Dao
@@ -9,18 +11,19 @@ interface RecipeDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(recipe: Recipe)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertMealType(mealType: MealType)
 
     @Transaction
     @Query("SELECT * FROM recipe WHERE recipeTitle=:recipeTitle")
-    fun getRecipe(recipeTitle: String): List<Recipe>
-
-    // select all from table recipes defined on out model class
-   // @Query("SELECT * FROM recipes")
-    //fun getAllRecipes(): Recipe
+    suspend fun getRecipe(recipeTitle: String): List<Recipe>
 
     @Delete
     suspend fun deleteRecipe(recipe: Recipe)
 
-    //@Query("SELECT COUNT(*) from recipes")
-    //fun countRecipes(): Int
+    @Transaction
+    @Query("SELECT * FROM recipe WHERE mealType = :mealType")
+    suspend fun getRecipeMealType(mealType: String): List<Recipe>
+
+
 }

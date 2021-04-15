@@ -17,27 +17,45 @@ class RecipeViewModel(application: Application): AndroidViewModel(application) {
             R.drawable.bulgogi_burgers,
             R.drawable.green_salat,
             R.drawable.vegansk_paprikagryderet)
-    private val mealTypeMainCourse = MealType(true, false, false)
-    private val mealTypeSideDish = MealType(false, true, false)
 
     init {
         val dao = RecipeDatabase.getAppDatabase(application)!!.recipeDao
         repository = RecipeRepository(dao)
 
         val recipes = listOf(
-            Recipe("Hotdog", "NamNam"),
-            Recipe("Burger", "Salat")
+            Recipe("Hotdog", "NamNam", "MainCourse"),
+            Recipe("Burger", "Salat", "MainCourse"),
+            Recipe("IsLagkage", "Is", "Dessert")
+        )
+
+        val mealTypes = listOf(
+            MealType("MainCourse"),
+            MealType("SideDish"),
+            MealType("Dessert")
         )
 
         recipes.forEach { insert(it) }
+        mealTypes.forEach { insertMealType(it) }
 
-        val recipe = getReciTest()
+
+        var recipe = getReciTest()
         println("reciTest" + recipe)
 
-        populateRecipes()
-        reci.value = recipeList
 
-        println(dao.getRecipe("Hotdog"))
+
+        viewModelScope.launch {
+            val result = listOf(dao.getRecipeMealType("MainCourse"))
+            println("result: " + result)
+            recipeList.apply { result }
+        }
+        //mealTypeList.value = getMealTypeWithRecipes()
+
+       // populateRecipes()
+        reci.value = recipeList
+        println("1:" + reci.value)
+        println("2:" + recipeList)
+
+        //println(dao.getRecipe("Hotdog"))
         }
 
     fun insert(recipe: Recipe){
@@ -45,9 +63,23 @@ class RecipeViewModel(application: Application): AndroidViewModel(application) {
             repository.insert(recipe)
         }
     }
+
+    fun insertMealType(mealType: MealType){
+        viewModelScope.launch {
+            repository.insertMealType(mealType)
+        }
+    }
+
     fun getReciTest(){
         viewModelScope.launch {
             repository.getRecipe().toString()
+        }
+    }
+
+
+    fun getMealTypeWithRecipes(){
+        viewModelScope.launch {
+            repository.getRecipeWithMealType()
         }
     }
 
@@ -57,7 +89,7 @@ class RecipeViewModel(application: Application): AndroidViewModel(application) {
 
 
     private fun populateRecipes(){
-       recipeList.add(Recipe("RecipeTitle blaaah", "This is a nice dish mateee"))
+      // recipeList.add(Recipe("RecipeTitle blaaah", "This is a nice dish mateee", "vbnm"))
        // recipeList.add(Recipe(2, images[0],"RecipeTitle blaaah", "This is a nice dish mateee", mealTypeMainCourse))
        // recipeList.add(Recipe(3, images[2],"RecipeTitle blaaah", "This is a nice dish mateee", mealTypeMainCourse))
        // recipeList.add(Recipe(4, images[2],"RecipeTitle blaaah", "This is a nice dish mateee", mealTypeSideDish))
