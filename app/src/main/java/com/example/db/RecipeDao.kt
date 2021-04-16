@@ -23,7 +23,7 @@ interface RecipeDao {
 
     @Transaction
     @Query("SELECT * FROM recipe WHERE mealType = :mealType")
-    suspend fun getRecipeMealType(mealType: String): List<Recipe>
+    fun getRecipeMealType(mealType: String): List<Recipe>
 
 
 }
