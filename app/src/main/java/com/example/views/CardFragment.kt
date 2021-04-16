@@ -7,12 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.example.food_recipe_app.databinding.FragmentCardBinding
-import com.example.viewmodels.ViewModel
+import com.example.viewmodels.RecipeViewModel
 
 class CardFragment : Fragment() {
     private lateinit var bindingCard: FragmentCardBinding
 
-    private val recipeViewModel: ViewModel by viewModels()
+    private val recipeViewModel: RecipeViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
