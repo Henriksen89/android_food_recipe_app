@@ -5,17 +5,23 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.food_recipe_app.R
 import com.example.models.Recipe
+import com.example.views.MainActivity
+import com.example.views.RecipeFragment
+import com.example.views.showRecipe.TabViewFragment
 
-class RecipeAdapter(private val listener: ViewHolderListener) : RecyclerView.Adapter<RecipeAdapter.ViewHolder>() {
+
+class RecipeAdapter(var recipeFragment: RecipeFragment) : RecyclerView.Adapter<RecipeAdapter.ViewHolder>() {
 
     inner class ViewHolder(frameLayout: View?,
-                     val imageView: ImageView,
-                     val textViewTitle: TextView,
-                     val textViewDescription: TextView) : RecyclerView.ViewHolder(frameLayout!!)
+                           val imageView: ImageView,
+                           val textViewTitle: TextView,
+                           val textViewDescription: TextView, val cardView: CardView) : RecyclerView.ViewHolder(frameLayout!!)
 
     // DiffUtil calculates the differences between two lists and enables only update those items there were different
     // Run async in the background and will not block the main thread
@@ -32,12 +38,11 @@ class RecipeAdapter(private val listener: ViewHolderListener) : RecyclerView.Ada
 
 
     interface ViewHolderListener{
-        // fun deleteRecipeOnClick(position: Int)
-        fun addRecipeOnClick(position: Int, number: Int)
+        fun ViewRecipe(cardView: CardView)
     }
 
     private lateinit var recipes: ArrayList<Recipe>
-
+    private lateinit var  cardView : CardView
 
     fun setRecipes(recipeList: ArrayList<Recipe>){
         recipes = recipeList
@@ -49,9 +54,20 @@ class RecipeAdapter(private val listener: ViewHolderListener) : RecyclerView.Ada
         val textViewTitle = view.findViewById<TextView>(R.id.recipeTextViewTitle)
         val textViewDescription = view.findViewById<TextView>(R.id.recipeTextViewDescription)
         val imageView = view.findViewById<ImageView>(R.id.recipeImageView)
-        return ViewHolder(view, imageView, textViewTitle, textViewDescription)
+        cardView = view.findViewById(R.id.card_view)
+        setListener(cardView, view)
+        return ViewHolder(view, imageView, textViewTitle, textViewDescription, cardView)
         //viewHolder.textView.setOnClickListener { v -> deleteRecipe(viewHolder.adapterPosition, v) }
         //return viewHolder;
+    }
+
+    fun setListener(cardView: CardView, view: View){
+        cardView.setOnClickListener(){
+            //val activity : MainActivity = view.context as MainActivity
+            //val tabViewFragment = TabViewFragment()
+            recipeFragment.findNavController().navigate(R.id.action_recipeFragment_to_tabViewFragment)
+            //activity.supportFragmentManager.beginTransaction().replace(R.id.recipeFragment, tabViewFragment).addToBackStack(null).commit()
+        }
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
@@ -63,6 +79,8 @@ class RecipeAdapter(private val listener: ViewHolderListener) : RecyclerView.Ada
 
     override fun getItemCount() = recipes.size
 
-
+    /*fun getCardView(): CardView {
+        if(cardView != null){return cardView}
+    }*/
 
 }

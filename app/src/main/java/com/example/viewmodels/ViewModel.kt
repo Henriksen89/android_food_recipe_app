@@ -26,19 +26,17 @@ class ViewModel: ViewModel() {
     }
 
     private fun insert(recipe: Recipe) {
-        repository.insert(recipe)
+       // repository.insert(recipe)
     }
 
-    private fun count(): Int {
-        return repository.count()
-    }
+
 
     private fun createNewRecipe(): Recipe {
         println("here")
-        recipe.id
-        recipe.image = images[1]
-        recipe.recipeTitle = "Flot"
-        recipe.recipeDescription = "flot flot opskrift"
+       // recipe.id
+       // recipe.image = images[1]
+       // recipe.recipeTitle = "Flot"
+       // recipe.recipeDescription = "flot flot opskrift"
         println(recipe)
         return recipe
     }
