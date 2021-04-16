@@ -36,7 +36,7 @@ class TabViewFragment : Fragment() {
     }
 
     private fun setViewPagerListener(mViewPager: ViewPager, tabLayout: TabLayout, viewPager: ViewPager) {
-        mViewPager.adapter = TabAdapter(this, childFragmentManager, tabLayout.tabCount, findNavController())
+        mViewPager.adapter = TabAdapter(this, childFragmentManager, tabLayout.tabCount)
 
         viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayout))
     }

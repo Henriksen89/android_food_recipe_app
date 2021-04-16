@@ -9,8 +9,7 @@ import com.example.views.showRecipe.RecipeInstructionsFragment
 import com.example.views.showRecipe.RecipeOverviewFragment
 import com.example.views.showRecipe.TabViewFragment
 
-class TabAdapter(var context: TabViewFragment, fm: FragmentManager, var totalTabs: Int, navController: NavController) : FragmentPagerAdapter(fm) {
-    private val navController = navController
+class TabAdapter(var context: TabViewFragment, fm: FragmentManager, var totalTabs: Int) : FragmentPagerAdapter(fm) {
 
     override fun getCount(): Int {
         return totalTabs
