@@ -11,9 +11,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.food_recipe_app.R
 import com.example.models.Recipe
-import com.example.views.MainActivity
 import com.example.views.RecipeFragment
-import com.example.views.showRecipe.TabViewFragment
 
 
 class RecipeAdapter(var recipeFragment: RecipeFragment) : RecyclerView.Adapter<RecipeAdapter.ViewHolder>() {
@@ -36,13 +34,7 @@ class RecipeAdapter(var recipeFragment: RecipeFragment) : RecyclerView.Adapter<R
     }
 
 
-
-    interface ViewHolderListener{
-        fun ViewRecipe(cardView: CardView)
-    }
-
     private lateinit var recipes: ArrayList<Recipe>
-    private lateinit var  cardView : CardView
 
     fun setRecipes(recipeList: ArrayList<Recipe>){
         recipes = recipeList
@@ -54,19 +46,17 @@ class RecipeAdapter(var recipeFragment: RecipeFragment) : RecyclerView.Adapter<R
         val textViewTitle = view.findViewById<TextView>(R.id.recipeTextViewTitle)
         val textViewDescription = view.findViewById<TextView>(R.id.recipeTextViewDescription)
         val imageView = view.findViewById<ImageView>(R.id.recipeImageView)
-        cardView = view.findViewById(R.id.card_view)
-        setListener(cardView, view)
+        val cardView = view.findViewById<CardView>(R.id.card_view)
+        setCardViewListener(cardView, view)
+
         return ViewHolder(view, imageView, textViewTitle, textViewDescription, cardView)
         //viewHolder.textView.setOnClickListener { v -> deleteRecipe(viewHolder.adapterPosition, v) }
         //return viewHolder;
     }
 
-    fun setListener(cardView: CardView, view: View){
+    private fun setCardViewListener(cardView: CardView, view: View){
         cardView.setOnClickListener(){
-            //val activity : MainActivity = view.context as MainActivity
-            //val tabViewFragment = TabViewFragment()
             recipeFragment.findNavController().navigate(R.id.action_recipeFragment_to_tabViewFragment)
-            //activity.supportFragmentManager.beginTransaction().replace(R.id.recipeFragment, tabViewFragment).addToBackStack(null).commit()
         }
     }
 
@@ -79,8 +69,5 @@ class RecipeAdapter(var recipeFragment: RecipeFragment) : RecyclerView.Adapter<R
 
     override fun getItemCount() = recipes.size
 
-    /*fun getCardView(): CardView {
-        if(cardView != null){return cardView}
-    }*/
 
 }

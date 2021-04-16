@@ -14,7 +14,7 @@ import com.example.food_recipe_app.R
 import com.example.food_recipe_app.databinding.FragmentRecipeBinding
 import com.example.viewmodels.RecipeViewModel
 
-class RecipeFragment : Fragment(), RecipeAdapter.ViewHolderListener {
+class RecipeFragment : Fragment() {
     private var _binding: FragmentRecipeBinding? = null
     private val binding get() = _binding!!
 
@@ -28,11 +28,6 @@ class RecipeFragment : Fragment(), RecipeAdapter.ViewHolderListener {
     ): View? {
         _binding = FragmentRecipeBinding.inflate(inflater, container, false)
 
-       // binding.RecyclerView.layoutManager.apply {
-       //     requireView().findViewById<CardView>(R.id.card_view)
-       // }
-
-
         binding.btnFilterRecipe.setOnClickListener{
             findNavController().navigate(R.id.action_recipeFragment_to_bottomSheetFragment)
         }
@@ -44,39 +39,16 @@ class RecipeFragment : Fragment(), RecipeAdapter.ViewHolderListener {
 
         adapter = RecipeAdapter(this)
         adapter.setRecipes(recipeViewModel.getRecipes().value!!)
-        /*adapter.ViewHolder().cardView.setOnClickListener {
-            findNavController().navigate(R.id.action_cardFragment_to_tabViewFragment)
-        }*/
+
         recyclerView.adapter = adapter
-
-        //val cardView = adapter.getCardView()
-        //setCardViewListener(cardView)
-
 
         return binding.root
         }
 
 
-    fun setCardViewListener(cardView: CardView){
-        if(cardView != null){
-        cardView.setOnClickListener(){
-            findNavController().navigate(R.id.action_recipeFragment_to_tabViewFragment)
 
-        }}
-    }
-
-    override fun ViewRecipe(cardView: CardView) {
-        //cardView.setOnClickListener(){
-        //    findNavController().navigate(R.id.action_recipeFragment_to_tabViewFragment)
-        //}
-    }
 
 }
 
-    //private fun setupRecyclerView(){
-       // binding.RecyclerView.adapter = recipeAdapter
-      //  binding.RecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-       // recipeAdapter.setRecipes(recipeViewModel.getRecipes().value!!)
-    //}
 
