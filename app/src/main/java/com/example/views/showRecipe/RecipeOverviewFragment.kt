@@ -8,13 +8,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.food_recipe_app.R
-import com.example.models.Recipe
+import com.example.food_recipe_app.databinding.FragmentRecipeOverviewBinding
 
-class RecipeOverviewFragment() : Fragment(){
-    private lateinit var imageView: ImageView
-    private lateinit var textViewTitle: TextView
-    private lateinit var textViewDescription: TextView
-
+class RecipeOverviewFragment(bundle: Bundle?) : Fragment(){
+    private var bundle = bundle
+    private var _binding: FragmentRecipeOverviewBinding? = null
+    private val binding get() = _binding!!
 
 
     override fun onCreateView(
@@ -22,13 +21,16 @@ class RecipeOverviewFragment() : Fragment(){
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view : View = inflater.inflate(R.layout.fragment_recipe_overview, container, false)
-        setUpRecipe(view)
+        _binding = FragmentRecipeOverviewBinding.inflate(inflater, container, false)
+        setUpRecipe(binding)
 
-        return view
+        return binding.root
     }
 
-    fun setUpRecipe(view: View){
+    private fun setUpRecipe(view: FragmentRecipeOverviewBinding){
+        binding.textViewOverviewTitle.text = bundle?.getString("textViewTitle")
+        binding.textViewOverviewDescription.text = bundle?.getString("textViewDescription")
+
         //imageView = view.findViewById(R.id.imageView_overview)
         //textViewTitle = view.findViewById(R.id.textView_overview_title)
         //textViewDescription = view.findViewById(R.id.textView_overview_description)

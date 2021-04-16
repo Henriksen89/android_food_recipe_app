@@ -1,16 +1,16 @@
 package com.example.adapter
 
+import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import androidx.navigation.NavController
 import com.example.views.showRecipe.RecipeIngredientsFragment
 import com.example.views.showRecipe.RecipeInstructionsFragment
 import com.example.views.showRecipe.RecipeOverviewFragment
 import com.example.views.showRecipe.TabViewFragment
 
-class TabAdapter(var context: TabViewFragment, fm: FragmentManager, var totalTabs: Int) : FragmentPagerAdapter(fm) {
-
+class TabAdapter(var context: TabViewFragment, fm: FragmentManager, var totalTabs: Int, bundle: Bundle) : FragmentPagerAdapter(fm) {
+    private var bundle: Bundle = bundle
     override fun getCount(): Int {
         return totalTabs
     }
@@ -21,13 +21,13 @@ class TabAdapter(var context: TabViewFragment, fm: FragmentManager, var totalTab
     override fun getItem(position: Int): Fragment {
         return when (position){
             0 -> {
-                RecipeOverviewFragment()
+                RecipeOverviewFragment(bundle)
             }
             1 -> {
-                RecipeIngredientsFragment()
+                RecipeIngredientsFragment(bundle)
             }
             2 -> {
-                RecipeInstructionsFragment()
+                RecipeInstructionsFragment(bundle)
             }
 
             else -> getItem(position)

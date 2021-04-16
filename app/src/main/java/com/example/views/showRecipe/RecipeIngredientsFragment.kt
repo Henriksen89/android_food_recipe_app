@@ -6,13 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
-import com.example.food_recipe_app.R
-import com.example.food_recipe_app.databinding.FragmentRecipeBinding
 import com.example.food_recipe_app.databinding.FragmentRecipeIngredientsBinding
-import com.example.models.Recipe
 
-class RecipeIngredientsFragment() : Fragment(){
-    private lateinit var imageView: ImageView
+class RecipeIngredientsFragment(bundle: Bundle?) : Fragment(){
+    private var bundle = bundle
     private var _binding: FragmentRecipeIngredientsBinding? = null
     private val binding get() = _binding!!
 
@@ -22,11 +19,12 @@ class RecipeIngredientsFragment() : Fragment(){
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentRecipeIngredientsBinding.inflate(inflater, container, false)
-
+        setUpRecipe()
         return binding.root
     }
 
-    fun setUpRecipe(view: View){
+    fun setUpRecipe(){
+        binding.textViewIngredients.text = bundle?.getString("textViewTitle")
         //imageView = view.findViewById(R.id.)
         //imageView.setImageResource(recipe.image)
     }

@@ -1,5 +1,6 @@
 package com.example.adapter
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,6 +36,10 @@ class RecipeAdapter(var recipeFragment: RecipeFragment) : RecyclerView.Adapter<R
 
 
     private lateinit var recipes: ArrayList<Recipe>
+    private lateinit var textViewTitle : TextView
+    private lateinit var textViewDescription : TextView
+    private lateinit var imageView: ImageView
+
 
     fun setRecipes(recipeList: ArrayList<Recipe>){
         recipes = recipeList
@@ -43,29 +48,37 @@ class RecipeAdapter(var recipeFragment: RecipeFragment) : RecyclerView.Adapter<R
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.fragment_card, viewGroup, false)
-        val textViewTitle = view.findViewById<TextView>(R.id.recipeTextViewTitle)
-        val textViewDescription = view.findViewById<TextView>(R.id.recipeTextViewDescription)
-        val imageView = view.findViewById<ImageView>(R.id.recipeImageView)
+        textViewTitle = view.findViewById<TextView>(R.id.recipeTextViewTitle)
+        textViewDescription = view.findViewById<TextView>(R.id.recipeTextViewDescription)
+        imageView = view.findViewById<ImageView>(R.id.recipeImageView)
         val cardView = view.findViewById<CardView>(R.id.card_view)
-        setCardViewListener(cardView, view)
+
+
 
         return ViewHolder(view, imageView, textViewTitle, textViewDescription, cardView)
         //viewHolder.textView.setOnClickListener { v -> deleteRecipe(viewHolder.adapterPosition, v) }
         //return viewHolder;
     }
 
-    private fun setCardViewListener(cardView: CardView, view: View){
+    private fun setCardViewListener(cardView: CardView, position: Int){
         cardView.setOnClickListener(){
-            recipeFragment.findNavController().navigate(R.id.action_recipeFragment_to_tabViewFragment)
+            println("position " + position)
+            println("SetCardViewListener " + recipes[position].recipeTitle)
+            val bundle = Bundle()
+            bundle.putString("textViewTitle", recipes[position].recipeTitle)
+            bundle.putString("textViewDescription", recipes[position].recipeDescription)
+            //val bundle = bundleOf("textViewTitle" to textViewTitle, "textViewDescription" to textViewDescription)
+            recipeFragment.findNavController().navigate(R.id.action_recipeFragment_to_tabViewFragment, bundle)
+
 
         }
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
+        val cardView = viewHolder.cardView
         viewHolder.textViewTitle.text = recipes[position].recipeTitle
         viewHolder.textViewDescription.text = recipes[position].recipeDescription
-       // viewHolder.imageView.setImageResource(recipes[position].image)
-
+        setCardViewListener(cardView, position)
     }
 
     override fun getItemCount() = recipes.size

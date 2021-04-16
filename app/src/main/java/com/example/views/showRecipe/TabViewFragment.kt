@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.ViewPager
 import com.example.adapter.TabAdapter
 import com.example.food_recipe_app.databinding.FragmentTabViewBinding
@@ -15,7 +14,7 @@ import com.google.android.material.tabs.TabLayout
 class TabViewFragment : Fragment() {
     private var _binding: FragmentTabViewBinding? = null
     private val binding get() = _binding!!
-
+    private lateinit var bundle: Bundle
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,6 +24,11 @@ class TabViewFragment : Fragment() {
         val viewPager: ViewPager = binding.viewPager
         val tabLayout: TabLayout = binding.tabs
         val mViewPager = binding.viewPager
+
+        //println(arguments.toString())
+        bundle = requireArguments()
+        //println(bundle?.getString("textViewTitle"))
+
 
         createTabs(tabLayout)
 
@@ -36,8 +40,7 @@ class TabViewFragment : Fragment() {
     }
 
     private fun setViewPagerListener(mViewPager: ViewPager, tabLayout: TabLayout, viewPager: ViewPager) {
-        mViewPager.adapter = TabAdapter(this, childFragmentManager, tabLayout.tabCount)
-
+        mViewPager.adapter = TabAdapter(this, childFragmentManager, tabLayout.tabCount, bundle)
         viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayout))
     }
 
