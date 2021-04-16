@@ -4,15 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.get
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.ViewPager
-import com.example.food_recipe_app.R
+import com.example.adapter.TabAdapter
 import com.example.food_recipe_app.databinding.FragmentTabViewBinding
 import com.google.android.material.tabs.TabLayout
-import kotlinx.android.synthetic.main.fragment_tab_view.*
 
 
 class TabViewFragment : Fragment() {

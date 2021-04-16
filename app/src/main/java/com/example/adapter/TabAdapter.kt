@@ -1,11 +1,13 @@
-package com.example.views.showRecipe
+package com.example.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.navigation.NavController
-import com.example.food_recipe_app.R
-import com.example.models.Recipe
+import com.example.views.showRecipe.RecipeIngredientsFragment
+import com.example.views.showRecipe.RecipeInstructionsFragment
+import com.example.views.showRecipe.RecipeOverviewFragment
+import com.example.views.showRecipe.TabViewFragment
 
 class TabAdapter(var context: TabViewFragment, fm: FragmentManager, var totalTabs: Int, navController: NavController) : FragmentPagerAdapter(fm) {
     private val navController = navController
