@@ -1,41 +1,64 @@
 package com.example.viewmodels
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.*
+import com.example.db.RecipeDatabase
 import com.example.food_recipe_app.R
 import com.example.models.MealType
 import com.example.models.Recipe
 import com.example.repository.RecipeRepository
-import com.example.views.BottomSheetFragment
+import kotlinx.coroutines.launch
 
-class RecipeViewModel: ViewModel() {
-   // private val recipeRepository: RecipeRepository = RecipeRepository()
-    private var recipes = MutableLiveData<ArrayList<Recipe>>()
+class RecipeViewModel(application: Application): AndroidViewModel(application) {
+    val dao = RecipeDatabase.getAppDatabase(application)!!.recipeDao
+    private val repository: RecipeRepository = RecipeRepository(dao)
+    private var reci = MutableLiveData<ArrayList<Recipe>>()
     private val recipeList = ArrayList<Recipe>()
-    private var images: IntArray = intArrayOf(
-            R.drawable.bulgogi_burgers,
-            R.drawable.green_salat,
-            R.drawable.vegansk_paprikagryderet)
-    private val mealTypeMainCourse = MealType(true, false, false)
-    private val mealTypeSideDish = MealType(false, true, false)
-
-
+   // private var images: IntArray = intArrayOf(
+   //         R.drawable.bulgogi_burgers,
+   //         R.drawable.green_salat,
+    //        R.drawable.vegansk_paprikagryderet)
 
     init {
-        populateRecipes()
-        recipes.value = recipeList
+
+        val recipes = listOf(
+            Recipe("Hotdog", "NamNam", "MainCourse"),
+            Recipe("Burger", "Salat", "MainCourse"),
+            Recipe("IsLagkage", "Is", "Dessert")
+        )
+
+        val mealTypes = listOf(
+            MealType("MainCourse"),
+            MealType("SideDish"),
+            MealType("Dessert")
+        )
+
+        recipes.forEach { insert(it) }
+        mealTypes.forEach { insertMealType(it) }
+
+        recipeList.addAll(dao.getRecipeMealType("MainCourse"))
+        reci.value = recipeList
+        }
+
+    fun insert(recipe: Recipe){
+        viewModelScope.launch {
+            repository.insert(recipe)
+        }
+    }
+
+    fun insertMealType(mealType: MealType){
+        viewModelScope.launch {
+            repository.insertMealType(mealType)
+        }
+    }
+
+    fun getMealTypeWithRecipes(){
+        viewModelScope.launch {
+            repository.getRecipeWithMealType()
+        }
     }
 
     fun getRecipes() : LiveData<ArrayList<Recipe>>{
-        return recipes
+        return reci
     }
-
-    private fun populateRecipes(){
-       recipeList.add(Recipe("RecipeTitle blaaah", "This is a nice dish mateee"))
-       // recipeList.add(Recipe(2, images[0],"RecipeTitle blaaah", "This is a nice dish mateee", mealTypeMainCourse))
-       // recipeList.add(Recipe(3, images[2],"RecipeTitle blaaah", "This is a nice dish mateee", mealTypeMainCourse))
-       // recipeList.add(Recipe(4, images[2],"RecipeTitle blaaah", "This is a nice dish mateee", mealTypeSideDish))
-       // recipeList.add(Recipe(5, images[2],"RecipeTitle blaaah", "This is a nice dish mateee", mealTypeSideDish))
-    }
-    }
+}

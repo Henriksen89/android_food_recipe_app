@@ -57,6 +57,7 @@ class RecipeAdapter(var recipeFragment: RecipeFragment) : RecyclerView.Adapter<R
     private fun setCardViewListener(cardView: CardView, view: View){
         cardView.setOnClickListener(){
             recipeFragment.findNavController().navigate(R.id.action_recipeFragment_to_tabViewFragment)
+
         }
     }
 

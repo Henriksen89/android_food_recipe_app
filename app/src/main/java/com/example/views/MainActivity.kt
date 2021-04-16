@@ -21,21 +21,7 @@ class MainActivity : AppCompatActivity()  {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-       // recipeViewModel.repository = (application as RecipeApplication).repository
         setContentView(R.layout.activity_main)
-
-        val dao = RecipeDatabase.getAppDatabase(this)!!
-        println("main oncreate")
-        //addDataToDb()
-        val recipes = listOf(
-            Recipe("Hotdog", "NamNam"),
-            Recipe("Burger", "Salat")
-        )
-
-        lifecycleScope.launch {
-            recipes.forEach { dao.recipeDao.insert(it) }
-        }
-        println("addData")
 
         navController = findNavController(R.id.navHostFragment)
         val appBarConfiguration = AppBarConfiguration(
@@ -49,16 +35,5 @@ class MainActivity : AppCompatActivity()  {
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
-    }
-
-    private fun addDataToDb() {
-        val recipes = listOf(
-            Recipe("Hotdog", "NamNam"),
-            Recipe("Burger", "Salat")
-        )
-
-        lifecycleScope.launch {
-            //recipes.forEach { dao.recipeDao.insert(it) }
-        }
     }
 }

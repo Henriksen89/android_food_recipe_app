@@ -44,11 +44,5 @@ class RecipeFragment : Fragment() {
 
         return binding.root
         }
-
-
-
-
 }
-
-
 

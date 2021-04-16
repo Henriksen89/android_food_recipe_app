@@ -7,7 +7,7 @@
     <data>
         <variable
             name="card"
-            type="com.example.viewmodels.ViewModel" />
+            type="com.example.viewmodels.RecipeViewModel" />
     </data>
 
     <androidx.cardview.widget.CardView
