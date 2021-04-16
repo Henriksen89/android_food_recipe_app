@@ -43,9 +43,6 @@ class BottomSheetFragment : BottomSheetDialogFragment() {
             Toast.makeText(view?.context, "Button Clicked", Toast.LENGTH_LONG).show()
             findNavController().navigate(R.id.action_bottomSheetFragment_to_recipeFragment)
         }
-
-
-
         return binding.root
     }
 
@@ -55,8 +52,6 @@ class BottomSheetFragment : BottomSheetDialogFragment() {
     }
 
     private fun registerFilterChange() {
-
-
     }
 
 

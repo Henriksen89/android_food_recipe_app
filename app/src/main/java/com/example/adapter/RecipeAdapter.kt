@@ -30,8 +30,6 @@ class RecipeAdapter(private val listener: RecipeFragment) : RecyclerView.Adapter
         }
     }
 
-
-
     interface ViewHolderListener{
         // fun deleteRecipeOnClick(position: Int)
         fun addRecipeOnClick(position: Int, number: Int)

@@ -20,7 +20,6 @@ class RecipeViewModel(application: Application): AndroidViewModel(application) {
     //        R.drawable.vegansk_paprikagryderet)
 
     init {
-
         val recipes = listOf(
             Recipe("Hotdog", "NamNam", "MainCourse"),
             Recipe("Burger", "Salat", "MainCourse"),
