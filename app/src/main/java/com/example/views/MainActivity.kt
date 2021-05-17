@@ -17,11 +17,18 @@ import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity()  {
     private lateinit var navController: NavController
-   // private val recipeViewModel: RViewModel by viewModels()
+
+    // some transient state for the activity instance
+    var mealTypeState: String? = null
+
+    // private val recipeViewModel: RViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        // recovering the instance state
+        mealTypeState = savedInstanceState?.getString(MEALTYPE_STATE_KEY)
 
         navController = findNavController(R.id.navHostFragment)
         val appBarConfiguration = AppBarConfiguration(
@@ -35,5 +42,17 @@ class MainActivity : AppCompatActivity()  {
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState?.run {
+            putString(MEALTYPE_STATE_KEY, mealTypeState)
+            //putString(TEXT_VIEW_KEY, textView.text.toString())
+        }
+        // call superclass to save any view hierarchy
+        super.onSaveInstanceState(outState)
+    }
+    companion object{
+        val MEALTYPE_STATE_KEY = "mealType"
     }
 }

@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.cardview.widget.CardView
 import androidx.fragment.app.*
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,6 +12,7 @@ import com.example.adapter.RecipeAdapter
 import com.example.food_recipe_app.R
 import com.example.food_recipe_app.databinding.FragmentRecipeBinding
 import com.example.viewmodels.RecipeViewModel
+import androidx.fragment.app.activityViewModels
 
 class RecipeFragment : Fragment() {
     private var _binding: FragmentRecipeBinding? = null
@@ -20,7 +20,8 @@ class RecipeFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: RecipeAdapter
-    private val recipeViewModel: RecipeViewModel by viewModels()
+    private val recipeViewModel: RecipeViewModel by activityViewModels()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,7 +29,7 @@ class RecipeFragment : Fragment() {
     ): View? {
         _binding = FragmentRecipeBinding.inflate(inflater, container, false)
 
-        binding.btnFilterRecipe.setOnClickListener{
+        binding.btnFilterRecipe.setOnClickListener {
             findNavController().navigate(R.id.action_recipeFragment_to_bottomSheetFragment)
         }
 
@@ -43,6 +44,33 @@ class RecipeFragment : Fragment() {
         recyclerView.adapter = adapter
 
         return binding.root
-        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        println("RecipeOnStart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        println("RecipeOnResume")
+    }
+
+    override fun onPause() {
+
+        super.onPause()
+        println("RecipeOnPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        println("RecipeOnStop")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        println("RecipeOnDestroy")
+    }
 }
 

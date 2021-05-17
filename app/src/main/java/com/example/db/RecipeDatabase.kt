@@ -12,7 +12,7 @@ import com.example.models.Recipe
     entities = [
         Recipe::class,
         MealType::class],
-    version = 4
+    version = 7
 )
 abstract class RecipeDatabase : RoomDatabase() {
     abstract val recipeDao: RecipeDao

@@ -3,16 +3,19 @@ package com.example.viewmodels
 import android.app.Application
 import androidx.lifecycle.*
 import com.example.db.RecipeDatabase
-import com.example.food_recipe_app.R
 import com.example.models.MealType
 import com.example.models.Recipe
 import com.example.repository.RecipeRepository
+import com.example.views.BottomSheetFragment
 import kotlinx.coroutines.launch
 
 class RecipeViewModel(application: Application): AndroidViewModel(application) {
     val dao = RecipeDatabase.getAppDatabase(application)!!.recipeDao
     private val repository: RecipeRepository = RecipeRepository(dao)
-    private var reci = MutableLiveData<ArrayList<Recipe>>()
+    var fragment: BottomSheetFragment? = BottomSheetFragment()
+    var mealType: String = "Dessert"
+
+    private var recipes = MutableLiveData<ArrayList<Recipe>>()
     private val recipeList = ArrayList<Recipe>()
    // private var images: IntArray = intArrayOf(
    //         R.drawable.bulgogi_burgers,
@@ -20,7 +23,6 @@ class RecipeViewModel(application: Application): AndroidViewModel(application) {
     //        R.drawable.vegansk_paprikagryderet)
 
     init {
-
         val recipes = listOf(
             Recipe("Hotdog", "NamNam", "MainCourse"),
             Recipe("Burger", "Salat", "MainCourse"),
@@ -36,8 +38,11 @@ class RecipeViewModel(application: Application): AndroidViewModel(application) {
         recipes.forEach { insert(it) }
         mealTypes.forEach { insertMealType(it) }
 
-        recipeList.addAll(dao.getRecipeMealType("MainCourse"))
-        reci.value = recipeList
+        if (recipeList.isEmpty()) {
+            recipeList.addAll(dao.getRecipeMealType(mealType))
+        }
+
+        this.recipes.value = recipeList
         }
 
     fun insert(recipe: Recipe){
@@ -52,13 +57,19 @@ class RecipeViewModel(application: Application): AndroidViewModel(application) {
         }
     }
 
-    fun getMealTypeWithRecipes(){
-        viewModelScope.launch {
-            repository.getRecipeWithMealType()
-        }
+    fun getRecipes() : LiveData<ArrayList<Recipe>>{
+        return recipes
+    }
+    /*
+    The updateMealType update the recipe list based on the selected meal type
+     */
+    fun updateMealType(mealType: String) {
+        recipeList.clear()
+        recipeList.addAll(dao.getRecipeMealType(mealType))
+        this.mealType = mealType
     }
 
-    fun getRecipes() : LiveData<ArrayList<Recipe>>{
-        return reci
+    fun getUpdatedMealType(): String{
+        return this.mealType
     }
 }

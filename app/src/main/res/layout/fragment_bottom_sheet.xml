@@ -55,9 +55,9 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginBottom="5dp"
-                    app.selectionRequired="true"
                     app:singleLine="true"
-                    app:singleSelection="true">
+                    app:singleSelection="true"
+                    app:checkedChip="@+id/chip_main_course">
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chip_main_course"
@@ -123,7 +123,6 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginBottom="5dp"
-                    app.selectionRequired="true"
                     app:singleLine="true"
                     app:singleSelection="true">
 

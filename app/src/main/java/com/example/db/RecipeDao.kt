@@ -21,9 +21,14 @@ interface RecipeDao {
     @Delete
     suspend fun deleteRecipe(recipe: Recipe)
 
+    //@Transaction
+    //@Query("SELECT * FROM recipe WHERE mealType = :mealType")
+    //fun getRecipeMealType(mealType: String): List<Recipe>
+
     @Transaction
     @Query("SELECT * FROM recipe WHERE mealType = :mealType")
     fun getRecipeMealType(mealType: String): List<Recipe>
 
-
+    @Update
+    fun update(mealType: MealType)
 }

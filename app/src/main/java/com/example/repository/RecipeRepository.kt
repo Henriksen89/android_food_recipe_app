@@ -18,8 +18,13 @@ class RecipeRepository(private val recipeDao: RecipeDao) {
 
     suspend fun getRecipe() = recipeDao.getRecipe("recipeTitle")
 
-    fun getRecipeWithMealType() = recipeDao.getRecipeMealType("mealType")
+    //fun getRecipeWithMealType() = recipeDao.getRecipeMealType(mealTypeSelected())
 
     suspend fun deleteRecipe(recipe: Recipe) = recipeDao.deleteRecipe(recipe)
+
+    fun mealTypeSelected(mealType: String): String{
+        var type = mealType
+        return type
+    }
 
 }
