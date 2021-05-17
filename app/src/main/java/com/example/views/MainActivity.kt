@@ -17,12 +17,15 @@ import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity()  {
     private lateinit var navController: NavController
-   // private val recipeViewModel: RViewModel by viewModels()
+
+    // some transient state for the activity instance
+    var mealTypeState: String? = null
+
+    // private val recipeViewModel: RViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        
         navController = findNavController(R.id.navHostFragment)
         val appBarConfiguration = AppBarConfiguration(
             setOf(

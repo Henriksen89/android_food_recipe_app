@@ -9,6 +9,6 @@ data class Recipe(
     val recipeTitle: String,
     val recipeDescription: String,
     val mealType: String,
-    val ingredients: List<Ingredient>,
-    val instructions: List<Instruction>
+    val ingredients: Ingredient,
+    val instructions: Instruction
 )

@@ -11,5 +11,5 @@ data class Instruction(
         @PrimaryKey(autoGenerate = false)
         @SerializedName("instructions")
         @TypeConverters(Converts::class)
-        var instructions: Array<String>
+        var instructions: List<String>
 )

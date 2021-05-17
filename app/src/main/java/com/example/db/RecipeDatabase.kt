@@ -18,7 +18,7 @@ import com.example.models.Recipe
         MealType::class,
         Ingredient::class,
         Instruction::class],
-    version = 5
+    version = 8
 )
 @TypeConverters(Converters::class)
 abstract class RecipeDatabase : RoomDatabase() {
