@@ -1,11 +1,6 @@
 package com.example.repository
 
-import androidx.room.Query
-import androidx.room.Transaction
 import com.example.db.RecipeDao
-import com.example.db.RecipeDatabase
-import com.example.models.Ingredient
-import com.example.models.Instruction
 import com.example.models.MealType
 import com.example.models.Recipe
 
@@ -16,14 +11,6 @@ class RecipeRepository(private val recipeDao: RecipeDao) {
 
     suspend fun insertMealType(mealType: MealType){
         recipeDao.insertMealType(mealType)
-    }
-
-    suspend fun insertIngredient(ingredient: Ingredient){
-        recipeDao.insertIngredient(ingredient)
-    }
-
-    suspend fun insertInstruction(instruction: Instruction){
-        recipeDao.insertInstruction(instruction)
     }
 
     suspend fun getRecipe() = recipeDao.getRecipe("recipeTitle")

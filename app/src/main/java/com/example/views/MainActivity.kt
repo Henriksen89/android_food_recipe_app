@@ -31,7 +31,6 @@ class MainActivity : AppCompatActivity()  {
             setOf(
                 R.id.recipeFragment,
                 R.id.fragmentFavorites))
-
         bottomNavigationView.setupWithNavController(navController)
         setupActionBarWithNavController(navController, appBarConfiguration)
     }

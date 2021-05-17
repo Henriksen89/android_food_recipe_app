@@ -1,10 +1,11 @@
 package com.example.viewmodels
 
 import android.app.Application
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import androidx.lifecycle.*
 import com.example.db.RecipeDatabase
-import com.example.models.Ingredient
-import com.example.models.Instruction
+import com.example.food_recipe_app.R
 import com.example.models.MealType
 import com.example.models.Recipe
 import com.example.repository.RecipeRepository
@@ -19,37 +20,46 @@ class RecipeViewModel(application: Application): AndroidViewModel(application) {
 
     private var recipes = MutableLiveData<ArrayList<Recipe>>()
     private val recipeList = ArrayList<Recipe>()
-   // private var images: IntArray = intArrayOf(
-   //         R.drawable.bulgogi_burgers,
-   //         R.drawable.green_salat,
-    //        R.drawable.vegansk_paprikagryderet)
+    private val images = ArrayList<Bitmap>()
+
+
+    private suspend fun getBitmap(url : String): Bitmap {
+        val options = BitmapFactory.Options()
+        options.inScaled = true
+        images.add(BitmapFactory.decodeResource(resources, R.drawable.bulgogi_burgers))
+        images.add(BitmapFactory.decodeResource(resources, R.drawable.green_salat))
+        images.add(BitmapFactory.decodeResource(resources, R.drawable.vegansk_paprikagryderet))
+
+    }
 
     init {
-        val ingredientsHotdog = Ingredient(listOf("Pølse", "Brød"))
-        val instructionsHotdog = Instruction(listOf(
+        val ingredientsHotdog = listOf("Pølse", "Brød")
+        val instructionsHotdog = listOf(
                 "Steg pølsen",
                 "Varm brødet",
                 "Put ketchup, remoulade og pølse i brødet")
-        )
 
-        val ingredientsBurger = Ingredient(listOf(
+
+        val ingredientsBurger = listOf(
                 "Oksekød",
                 "Løg",
                 "Tomat",
                 "Etc")
-        )
 
-        val instructionsBurger = Instruction(listOf(
+
+        val instructionsBurger = listOf(
                 "Steg bøf",
                 "Skær grøntsager",
                 "Lav resten")
-        )
+        val instructionsIsLagKage = listOf("Smid",  "det oven på hinanden")
+
+        val ingredientsIsLagKage = listOf("vaniljeis", "lagkagebund fra rema")
 
 
         val recipes = listOf(
             Recipe("Hotdog", "NamNam", "MainCourse", ingredientsHotdog, instructionsHotdog),
             Recipe("Burger", "Salat", "MainCourse", ingredientsBurger, instructionsBurger),
-            Recipe("IsLagkage", "Is", "Dessert", ingredientsBurger, instructionsBurger)
+            Recipe("IsLagkage", "Is", "Dessert", ingredientsIsLagKage, instructionsIsLagKage)
         )
 
         val mealTypes = listOf(
@@ -64,6 +74,7 @@ class RecipeViewModel(application: Application): AndroidViewModel(application) {
         if (recipeList.isEmpty()) {
             recipeList.addAll(dao.getRecipeMealType(mealType))
         }
+        println(recipeList)
 
         this.recipes.value = recipeList
         }

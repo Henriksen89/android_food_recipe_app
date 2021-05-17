@@ -10,6 +10,7 @@ import com.example.food_recipe_app.R
 import com.example.food_recipe_app.databinding.FragmentRecipeBinding
 import com.example.food_recipe_app.databinding.FragmentRecipeIngredientsBinding
 import com.example.food_recipe_app.databinding.FragmentRecipeInstructionsBinding
+import java.util.*
 
 class RecipeInstructionsFragment(bundle: Bundle?) : Fragment(){
     private var bundle = bundle
@@ -27,9 +28,16 @@ class RecipeInstructionsFragment(bundle: Bundle?) : Fragment(){
     }
 
     fun setUpRecipe() {
-        binding.textViewInstructions.text = bundle?.getString("textViewTitle")
+        binding.textViewInstructions.text = Arrays.toString(bundle?.getStringArray("instructions"))
 
-    // imageView = view.findViewById(R.id.imageView_instructions)
+        // imageView = view.findViewById(R.id.imageView_instructions)
         //imageView.setImageResource(recipe.image)
+    }
+
+    fun iterator(){
+        for(i in bundle?.getStringArray("instructions")!!){
+            binding.textViewInstructions.text = i
+
+        }
     }
 }

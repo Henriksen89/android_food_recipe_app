@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import com.example.food_recipe_app.databinding.FragmentRecipeIngredientsBinding
+import java.util.*
 
 class RecipeIngredientsFragment(bundle: Bundle?) : Fragment(){
     private var bundle = bundle
@@ -24,9 +25,13 @@ class RecipeIngredientsFragment(bundle: Bundle?) : Fragment(){
     }
 
     fun setUpRecipe(){
-        binding.textViewIngredients.text = bundle?.getString("textViewTitle")
+        binding.textViewIngredients.text = Arrays.toString(bundle?.getStringArray("ingredients"))
         //imageView = view.findViewById(R.id.)
         //imageView.setImageResource(recipe.image)
+    }
+    
+    fun iterate(){
+        
     }
 
 }

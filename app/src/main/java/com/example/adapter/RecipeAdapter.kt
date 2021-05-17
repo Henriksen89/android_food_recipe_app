@@ -67,6 +67,14 @@ class RecipeAdapter(var recipeFragment: RecipeFragment) : RecyclerView.Adapter<R
             val bundle = Bundle()
             bundle.putString("textViewTitle", recipes[position].recipeTitle)
             bundle.putString("textViewDescription", recipes[position].recipeDescription)
+            val ingredients : Array<String> = recipes[position].ingredients.toTypedArray()
+            bundle.putStringArray("ingredients", ingredients)
+            println("ingredients in recipeAdapter " + ingredients.toString())
+
+
+            val instructions : Array<String> = recipes[position].instructions.toTypedArray()
+            println("instructions in recipeAdapter " + instructions.toString())
+            bundle.putStringArray("instructions", instructions)
             //val bundle = bundleOf("textViewTitle" to textViewTitle, "textViewDescription" to textViewDescription)
             recipeFragment.findNavController().navigate(R.id.action_recipeFragment_to_tabViewFragment, bundle)
 
