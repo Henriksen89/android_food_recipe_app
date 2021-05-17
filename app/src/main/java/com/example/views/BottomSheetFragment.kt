@@ -5,16 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.food_recipe_app.R
 import com.example.food_recipe_app.databinding.FragmentBottomSheetBinding
-import com.example.food_recipe_app.databinding.FragmentRecipeBinding
-import com.example.models.DietType
-import com.example.models.MealType
 import com.example.viewmodels.RecipeViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.fragment_bottom_sheet.*
@@ -39,7 +32,6 @@ class BottomSheetFragment : BottomSheetDialogFragment() {
             Toast.makeText(view?.context, "Selected " + checkedMealType, Toast.LENGTH_LONG).show()
             onDestroy()
             findNavController().navigate(R.id.action_bottomSheetFragment_to_recipeFragment)
-
         }
         return binding.root
     }
@@ -69,7 +61,7 @@ class BottomSheetFragment : BottomSheetDialogFragment() {
         println("bottomsheet onDestroy")
     }
 
-    fun getCheckMealType(): String {
+    private fun getCheckMealType(): String {
         if (chip_main_course.isChecked){
             return "MainCourse"
         }

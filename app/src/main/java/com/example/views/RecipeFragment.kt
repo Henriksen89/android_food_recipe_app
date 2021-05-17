@@ -53,7 +53,6 @@ class RecipeFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-
         println("RecipeOnResume")
     }
 
