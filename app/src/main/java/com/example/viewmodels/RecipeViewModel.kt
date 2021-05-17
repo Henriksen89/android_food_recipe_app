@@ -3,7 +3,8 @@ package com.example.viewmodels
 import android.app.Application
 import androidx.lifecycle.*
 import com.example.db.RecipeDatabase
-import com.example.food_recipe_app.R
+import com.example.models.Ingredient
+import com.example.models.Instruction
 import com.example.models.MealType
 import com.example.models.Recipe
 import com.example.repository.RecipeRepository
@@ -20,11 +21,37 @@ class RecipeViewModel(application: Application): AndroidViewModel(application) {
     //        R.drawable.vegansk_paprikagryderet)
 
     init {
+        val ingredientsHotdog = Array<String>
+            listOf(
+                Ingredient("Pølse"),
+                Ingredient("Hotdog Bread"),
+                Ingredient("Ketchup"),
+                Ingredient("Remoulade")
+        )
+
+        val instructionsHotdog = listOf(
+                Instruction("Steg pølsen"),
+                Instruction("Varm brødet"),
+                Instruction("Put ketchup, remoulade og pølse i brødet")
+        )
+
+        val ingredientsBurger = listOf(
+                Ingredient("Oksekød"),
+                Ingredient("Løg"),
+                Ingredient("Tomat"),
+                Ingredient("Etc")
+        )
+
+        val instructionsBurger = listOf(
+                Instruction("Steg bøf"),
+                Instruction("Skær grøntsager"),
+                Instruction("Lav resten")
+        )
 
         val recipes = listOf(
-            Recipe("Hotdog", "NamNam", "MainCourse"),
-            Recipe("Burger", "Salat", "MainCourse"),
-            Recipe("IsLagkage", "Is", "Dessert")
+            Recipe("Hotdog", "NamNam", "MainCourse", ingredientsHotdog, instructionsHotdog),
+            Recipe("Burger", "Salat", "MainCourse", ingredientsBurger, instructionsBurger),
+            Recipe("IsLagkage", "Is", "Dessert", ingredientsBurger, instructionsBurger)
         )
 
         val mealTypes = listOf(

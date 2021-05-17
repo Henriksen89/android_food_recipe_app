@@ -8,5 +8,7 @@ data class Recipe(
     @PrimaryKey(autoGenerate = false)
     val recipeTitle: String,
     val recipeDescription: String,
-    val mealType: String
+    val mealType: String,
+    val ingredients: List<Ingredient>,
+    val instructions: List<Instruction>
 )
