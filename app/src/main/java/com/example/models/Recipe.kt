@@ -1,5 +1,6 @@
 package com.example.models
 
+import android.graphics.Bitmap
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -18,7 +19,7 @@ data class Recipe(
     val ingredients: List<String>,
     @TypeConverters
     val instructions: List<String>,
-    @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
-    val image : Byte[]
+    @TypeConverters
+    val image : Bitmap
 
 )
