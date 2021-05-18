@@ -29,33 +29,17 @@ class RecipeViewModel(application: Application): AndroidViewModel(application) {
     private val recipeList = ArrayList<Recipe>()
     private var images = ArrayList<Bitmap>()
     var context = application.applicationContext
-    init {
 
+    init {
         images = getBitmap()
 
         val ingredientsHotdog = listOf("Pølse", "Brød")
-        val instructionsHotdog = listOf(
-                "Steg pølsen",
-                "Varm brødet",
-                "Put ketchup, remoulade og pølse i brødet"
-        )
+        val instructionsHotdog = listOf("Steg pølsen", "Varm brødet", "Put ketchup, remoulade og pølse i brødet")
 
+        val ingredientsBurger = listOf("Oksekød","Løg","Tomat","Etc")
+        val instructionsBurger = listOf( "Steg bøf","Skær grøntsager","Lav resten")
 
-        val ingredientsBurger = listOf(
-                "Oksekød",
-                "Løg",
-                "Tomat",
-                "Etc"
-        )
-
-
-        val instructionsBurger = listOf(
-                "Steg bøf",
-                "Skær grøntsager",
-                "Lav resten"
-        )
         val instructionsIsLagKage = listOf("Smid", "det oven på hinanden")
-
         val ingredientsIsLagKage = listOf("vaniljeis", "lagkagebund fra rema")
 
         val recipes = listOf(
@@ -90,9 +74,6 @@ class RecipeViewModel(application: Application): AndroidViewModel(application) {
         images.add(BitmapFactory.decodeResource(context.resources, R.drawable.bulgogi_burgers))
         images.add(BitmapFactory.decodeResource(context.resources, R.drawable.green_salat))
         images.add(BitmapFactory.decodeResource(context.resources, R.drawable.vegansk_paprikagryderet))
-
-        println("images printed " + images)
-        println("a image on index 0" + images.get(0))
 
         return images
     }
