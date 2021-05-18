@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.food_recipe_app.R
 import com.example.models.Recipe
 import com.example.views.RecipeFragment
+import kotlinx.android.synthetic.main.fragment_card.view.*
 
 
 class RecipeAdapter(var recipeFragment: RecipeFragment) : RecyclerView.Adapter<RecipeAdapter.ViewHolder>() {
@@ -63,8 +64,6 @@ class RecipeAdapter(var recipeFragment: RecipeFragment) : RecyclerView.Adapter<R
 
     private fun setCardViewListener(cardView: CardView, position: Int){
         cardView.setOnClickListener(){
-            println("position " + position)
-            println("SetCardViewListener " + recipes[position].recipeTitle)
             val bundle = Bundle()
             bundle.putString("textViewTitle", recipes[position].recipeTitle)
             bundle.putString("textViewDescription", recipes[position].recipeDescription)
@@ -87,6 +86,7 @@ class RecipeAdapter(var recipeFragment: RecipeFragment) : RecyclerView.Adapter<R
         val cardView = viewHolder.cardView
         viewHolder.textViewTitle.text = recipes[position].recipeTitle
         viewHolder.textViewDescription.text = recipes[position].recipeDescription
+        viewHolder.imageView.setImageBitmap(recipes[position].image)
         setCardViewListener(cardView, position)
     }
 
