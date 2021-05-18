@@ -12,7 +12,7 @@
     <string name="chicken">Chicken</string>
     <string name="vegetarian">Vegetarian</string>
     <string name="gluten_free">Gluten Free</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Under_development">Hello blank fragment</string>
     <string name="recipe_fragment">Recipes</string>
     <string name="favorites_fragment">Favorites</string>
     <string name="recipe_overview_fragment">recipe_overview_fragment</string>
