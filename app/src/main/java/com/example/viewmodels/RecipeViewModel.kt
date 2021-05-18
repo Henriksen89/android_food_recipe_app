@@ -1,7 +1,6 @@
 package com.example.viewmodels
 
 import android.app.Application
-import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import androidx.lifecycle.AndroidViewModel
@@ -15,8 +14,6 @@ import com.example.models.Recipe
 import com.example.repository.RecipeRepository
 import com.example.views.BottomSheetFragment
 import kotlinx.coroutines.launch
-import java.io.ByteArrayOutputStream
-import java.io.InputStream
 
 
 class RecipeViewModel(application: Application): AndroidViewModel(application) {
@@ -33,19 +30,27 @@ class RecipeViewModel(application: Application): AndroidViewModel(application) {
     init {
         images = getBitmap()
 
-        val ingredientsHotdog = listOf("Pølse", "Brød")
-        val instructionsHotdog = listOf("Steg pølsen", "Varm brødet", "Put ketchup, remoulade og pølse i brødet")
+        // Main Courses
+        val ingredientsSalat = listOf("Salat", "Agurk", "Tomat", "Dressing" )
+        val instructionsSalat = listOf("Vask alle grønsager", "Snit grønsager og salaten groft", "Bland det hele sammen", "Velbekomme")
 
-        val ingredientsBurger = listOf("Oksekød","Løg","Tomat","Etc")
-        val instructionsBurger = listOf( "Steg bøf","Skær grøntsager","Lav resten")
+        val ingredientsBurger = listOf("Oksekød","Løg","Tomat","Agurk", "Ost", "Burger bolle")
+        val instructionsBurger = listOf( "Steg bøf","Skær grøntsager","Varm bruger bollen i ovnen i 5 min", "Burgeren samles og er klar til at spise", "Velbekomme")
 
+        val ingredientsPaprikagryderet = listOf("Bønner", "Paprika", "Tomat", "Chili" )
+        val instructionsingredientsPaprikagryderet= listOf("Vask grønsager", "Smid hele molivitten i en gryde", "Kog sammen i 30 min", "Velbekomme")
+
+        // Side Dishes
+
+        // Dessert
         val instructionsIsLagKage = listOf("Smid", "det oven på hinanden")
         val ingredientsIsLagKage = listOf("vaniljeis", "lagkagebund fra rema")
 
         val recipes = listOf(
-                Recipe("Hotdog", "NamNam", "MainCourse", ingredientsHotdog, instructionsHotdog, images.get(0)),
-                Recipe("Burger", "Salat", "MainCourse", ingredientsBurger, instructionsBurger, images.get(1)),
-                Recipe("IsLagkage", "Is", "Dessert", ingredientsIsLagKage, instructionsIsLagKage, images.get(2))
+                Recipe("Salat", "Lækker nem salat", "MainCourse", ingredientsSalat, instructionsSalat, images.get(1)),
+                Recipe("Burger","Verdens bedste burger","MainCourse", ingredientsBurger, instructionsBurger, images.get(0)),
+                Recipe("IsLagkage", "Is", "Dessert", ingredientsIsLagKage, instructionsIsLagKage, images.get(2)),
+                Recipe("Paprikagryderet", "Fremragende og nem gryderet", "MainCourse", ingredientsPaprikagryderet, instructionsingredientsPaprikagryderet, images.get(2))
         )
 
         val mealTypes = listOf(
