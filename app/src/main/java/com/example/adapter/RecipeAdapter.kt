@@ -1,5 +1,6 @@
 package com.example.adapter
 
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -67,14 +68,14 @@ class RecipeAdapter(var recipeFragment: RecipeFragment) : RecyclerView.Adapter<R
             val bundle = Bundle()
             bundle.putString("textViewTitle", recipes[position].recipeTitle)
             bundle.putString("textViewDescription", recipes[position].recipeDescription)
-            val ingredients : Array<String> = recipes[position].ingredients.toTypedArray()
-            bundle.putStringArray("ingredients", ingredients)
-            println("ingredients in recipeAdapter " + ingredients.toString())
 
 
-            val instructions : Array<String> = recipes[position].instructions.toTypedArray()
-            println("instructions in recipeAdapter " + instructions.toString())
-            bundle.putStringArray("instructions", instructions)
+            bundle.putStringArray("ingredients", recipes[position].ingredients.toTypedArray())
+
+
+            bundle.putStringArray("instructions", recipes[position].instructions.toTypedArray())
+
+            bundle.putParcelable("BitmapImage", recipes[position].image)
             //val bundle = bundleOf("textViewTitle" to textViewTitle, "textViewDescription" to textViewDescription)
             recipeFragment.findNavController().navigate(R.id.action_recipeFragment_to_tabViewFragment, bundle)
 

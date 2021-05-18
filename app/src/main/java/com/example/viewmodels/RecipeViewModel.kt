@@ -1,12 +1,13 @@
 package com.example.viewmodels
 
 import android.app.Application
-import android.content.Context
 import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.drawable.Drawable
-import androidx.lifecycle.*
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.example.db.RecipeDatabase
 import com.example.food_recipe_app.R
 import com.example.models.MealType
@@ -14,6 +15,7 @@ import com.example.models.Recipe
 import com.example.repository.RecipeRepository
 import com.example.views.BottomSheetFragment
 import kotlinx.coroutines.launch
+import java.io.ByteArrayOutputStream
 import java.io.InputStream
 
 
@@ -59,8 +61,8 @@ class RecipeViewModel(application: Application): AndroidViewModel(application) {
 
         val recipes = listOf(
                 Recipe("Hotdog", "NamNam", "MainCourse", ingredientsHotdog, instructionsHotdog, images.get(0)),
-                Recipe("Burger", "Salat", "MainCourse", ingredientsBurger, instructionsBurger, images.get(0)),
-                Recipe("IsLagkage", "Is", "Dessert", ingredientsIsLagKage, instructionsIsLagKage, images.get(0))
+                Recipe("Burger", "Salat", "MainCourse", ingredientsBurger, instructionsBurger, images.get(1)),
+                Recipe("IsLagkage", "Is", "Dessert", ingredientsIsLagKage, instructionsIsLagKage, images.get(2))
         )
 
         val mealTypes = listOf(
@@ -85,10 +87,27 @@ class RecipeViewModel(application: Application): AndroidViewModel(application) {
         val images = ArrayList<Bitmap>()
         val options = BitmapFactory.Options()
         options.inScaled = true
-        var assetInStream: InputStream? = null
+
 
         //val d: Drawable = Resources.getSystem().getDrawable(R.drawable.bulgogi_burgers)
-        images.add(BitmapFactory.decodeResource(context.resources, R.drawable.bulgogi_burgers, options.inScaled))
+        //val b1 : Bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.bulgogi_burgers)
+        //val b2 : Bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.green_salat)
+        //val b3 : Bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.vegansk_paprikagryderet)
+        //images.add(Bitmap.createScaledBitmap(b1, 120, 120, false))
+        //val out = ByteArrayOutputStream()
+        //val b1 : Bitmap? = shrinkBitmap(context.resources, R.drawable.bulgogi_burgers, 50,50)
+        //val b2 : Bitmap? = shrinkBitmap(context.resources, R.drawable.green_salat, 50,50)
+
+        //val b3 : Bitmap? = shrinkBitmap(context.resources, R.drawable.vegansk_paprikagryderet, 50,50)
+
+        //if (b1 != null && b2 !=null && b3!= null) {
+        //    images.add(b1)
+        //    images.add(b2)
+        //    images.add(b3)
+       //}
+
+
+        images.add(BitmapFactory.decodeResource(context.resources, R.drawable.bulgogi_burgers))
         images.add(BitmapFactory.decodeResource(context.resources, R.drawable.green_salat))
         images.add(BitmapFactory.decodeResource(context.resources, R.drawable.vegansk_paprikagryderet))
 
@@ -112,6 +131,25 @@ class RecipeViewModel(application: Application): AndroidViewModel(application) {
         //println("img in getbitmap recipeviewmodel " + images)
         return images
     }
+
+    fun shrinkBitmap(res: Resources,file: Int, width: Int, height: Int): Bitmap? {
+        val bmpFactoryOptions = BitmapFactory.Options()
+        bmpFactoryOptions.inJustDecodeBounds = true
+        var bitmap = BitmapFactory.decodeResource(res, file, bmpFactoryOptions)
+        val heightRatio = Math.ceil((bmpFactoryOptions.outHeight / height.toFloat()).toDouble()).toInt()
+        val widthRatio = Math.ceil((bmpFactoryOptions.outWidth / width.toFloat()).toDouble()).toInt()
+        if (heightRatio > 1 || widthRatio > 1) {
+            if (heightRatio > widthRatio) {
+                bmpFactoryOptions.inSampleSize = heightRatio
+            } else {
+                bmpFactoryOptions.inSampleSize = widthRatio
+            }
+        }
+        bmpFactoryOptions.inJustDecodeBounds = false
+        bitmap = BitmapFactory.decodeResource(res, file, bmpFactoryOptions)
+        return bitmap
+    }
+
 
     fun insert(recipe: Recipe){
         viewModelScope.launch {

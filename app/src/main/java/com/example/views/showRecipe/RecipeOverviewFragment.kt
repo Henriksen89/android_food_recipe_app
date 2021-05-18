@@ -1,5 +1,6 @@
 package com.example.views.showRecipe
 
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -31,6 +32,9 @@ class RecipeOverviewFragment(bundle: Bundle?) : Fragment(){
         binding.textViewOverviewTitle.text = bundle?.getString("textViewTitle")
         binding.textViewOverviewDescription.text = bundle?.getString("textViewDescription")
 
+        val image : Bitmap? = bundle?.getParcelable<Bitmap>("BitmapImage")
+        binding.imageViewOverview.setImageBitmap(image)
+        //binding.imageViewOverview.setImageResource(bundle?.getParcelable("BitmapImage"))
         //imageView = view.findViewById(R.id.imageView_overview)
         //textViewTitle = view.findViewById(R.id.textView_overview_title)
         //textViewDescription = view.findViewById(R.id.textView_overview_description)

@@ -29,7 +29,6 @@ class RecipeInstructionsFragment(bundle: Bundle?) : Fragment(){
 
     fun setUpRecipe() {
         binding.textViewInstructions.text = Arrays.toString(bundle?.getStringArray("instructions"))
-
         // imageView = view.findViewById(R.id.imageView_instructions)
         //imageView.setImageResource(recipe.image)
     }
