@@ -65,12 +65,12 @@ class RecipeViewModel(application: Application): AndroidViewModel(application) {
         if (recipeList.isEmpty()) {
             recipeList.addAll(dao.getRecipeMealType(mealType))
         }
-        println(recipeList)
-
         this.recipes.value = recipeList
         }
 
-
+    /**
+     * return images from resources
+     */
     private fun getBitmap(): ArrayList<Bitmap> {
         val images = ArrayList<Bitmap>()
         val options = BitmapFactory.Options()
@@ -82,6 +82,7 @@ class RecipeViewModel(application: Application): AndroidViewModel(application) {
 
         return images
     }
+
 
     fun insert(recipe: Recipe){
         viewModelScope.launch {
@@ -95,11 +96,12 @@ class RecipeViewModel(application: Application): AndroidViewModel(application) {
         }
     }
 
+
     fun getRecipes() : LiveData<ArrayList<Recipe>>{
         return recipes
     }
-    /*
-    The updateMealType update the recipe list based on the selected meal type
+    /**
+     * The updateMealType update the recipe list based on the selected meal type
      */
     fun updateMealType(mealType: String) {
         recipeList.clear()

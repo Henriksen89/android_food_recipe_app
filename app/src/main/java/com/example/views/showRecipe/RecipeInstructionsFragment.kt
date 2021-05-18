@@ -21,13 +21,12 @@ class RecipeInstructionsFragment(bundle: Bundle?) : Fragment(){
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         _binding = FragmentRecipeInstructionsBinding.inflate(inflater, container, false)
         setUpRecipe()
         return binding.root
     }
 
-    fun setUpRecipe() {
+    private fun setUpRecipe() {
         var counter = 1
         var instructions = ""
         for(i in bundle?.getStringArray("instructions")!!){

@@ -58,15 +58,18 @@ class RecipeAdapter(var recipeFragment: RecipeFragment) : RecyclerView.Adapter<R
     private fun setCardViewListener(cardView: CardView, position: Int){
         cardView.setOnClickListener(){
             val bundle = Bundle()
-
-            bundle.putString("textViewTitle", recipes[position].recipeTitle)
-            bundle.putString("textViewDescription", recipes[position].recipeDescription)
-            bundle.putStringArray("ingredients", recipes[position].ingredients.toTypedArray())
-            bundle.putStringArray("instructions", recipes[position].instructions.toTypedArray())
-            bundle.putParcelable("BitmapImage", recipes[position].image)
-
+            createBundleData(bundle, position)
             recipeFragment.findNavController().navigate(R.id.action_recipeFragment_to_tabViewFragment, bundle)
         }
+    }
+
+    private fun createBundleData(bundle: Bundle, position: Int) : Bundle{
+        bundle.putString("textViewTitle", recipes[position].recipeTitle)
+        bundle.putString("textViewDescription", recipes[position].recipeDescription)
+        bundle.putStringArray("ingredients", recipes[position].ingredients.toTypedArray())
+        bundle.putStringArray("instructions", recipes[position].instructions.toTypedArray())
+        bundle.putParcelable("BitmapImage", recipes[position].image)
+        return bundle
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {

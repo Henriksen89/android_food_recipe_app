@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
 import com.example.adapter.TabAdapter
@@ -24,16 +25,12 @@ class TabViewFragment : Fragment() {
         val viewPager: ViewPager = binding.viewPager
         val tabLayout: TabLayout = binding.tabs
         val mViewPager = binding.viewPager
+        (activity as AppCompatActivity).supportActionBar?.title = "Details"
 
-        //println(arguments.toString())
         bundle = requireArguments()
-        //println(bundle?.getString("textViewTitle"))
-
 
         createTabs(tabLayout)
-
         setViewPagerListener(mViewPager, tabLayout, viewPager)
-
         tabListener(tabLayout, viewPager)
 
         return binding.root

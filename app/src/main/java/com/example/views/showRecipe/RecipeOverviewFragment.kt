@@ -23,16 +23,14 @@ class RecipeOverviewFragment(bundle: Bundle?) : Fragment(){
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentRecipeOverviewBinding.inflate(inflater, container, false)
-        setUpRecipe(binding)
+        setUpRecipe()
 
         return binding.root
     }
 
-    private fun setUpRecipe(view: FragmentRecipeOverviewBinding){
+    private fun setUpRecipe(){
         binding.textViewOverviewTitle.text = bundle?.getString("textViewTitle")
         binding.textViewOverviewDescription.text = bundle?.getString("textViewDescription")
-
-        val image : Bitmap? = bundle?.getParcelable<Bitmap>("BitmapImage")
-        binding.imageViewOverview.setImageBitmap(image)
+        binding.imageViewOverview.setImageBitmap(bundle?.getParcelable<Bitmap>("BitmapImage"))
     }
 }

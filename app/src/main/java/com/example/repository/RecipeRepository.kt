@@ -5,6 +5,7 @@ import com.example.models.MealType
 import com.example.models.Recipe
 
 class RecipeRepository(private val recipeDao: RecipeDao) {
+
     suspend fun insert(recipe: Recipe){
         recipeDao.insert(recipe)
     }

@@ -14,7 +14,6 @@ data class Recipe(
     val recipeTitle: String,
     val recipeDescription: String,
     val mealType: String,
-    @SerializedName("")
     @TypeConverters
     val ingredients: List<String>,
     @TypeConverters

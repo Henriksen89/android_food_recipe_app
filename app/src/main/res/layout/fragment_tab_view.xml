@@ -1,9 +1,10 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    >
 
     <data>
         <variable
-            name="Tab_view_fragment"
+            name="Details"
             type="com.example.views.showRecipe.TabViewFragment"/>
     </data>
 
@@ -29,7 +30,8 @@
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></androidx.viewpager.widget.ViewPager>
+            android:layout_height="match_parent">
+        </androidx.viewpager.widget.ViewPager>
 
     </FrameLayout>
 </layout>
