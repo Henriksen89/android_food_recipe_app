@@ -34,12 +34,5 @@ class RecipeOverviewFragment(bundle: Bundle?) : Fragment(){
 
         val image : Bitmap? = bundle?.getParcelable<Bitmap>("BitmapImage")
         binding.imageViewOverview.setImageBitmap(image)
-        //binding.imageViewOverview.setImageResource(bundle?.getParcelable("BitmapImage"))
-        //imageView = view.findViewById(R.id.imageView_overview)
-        //textViewTitle = view.findViewById(R.id.textView_overview_title)
-        //textViewDescription = view.findViewById(R.id.textView_overview_description)
-        //imageView.setImageResource(recipe.image)
-        //textViewTitle.text = recipe.recipeTitle
-        //textViewDescription.text = recipe.recipeDescription
     }
 }

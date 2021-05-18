@@ -28,13 +28,6 @@ class RecipeInstructionsFragment(bundle: Bundle?) : Fragment(){
     }
 
     fun setUpRecipe() {
-        //binding.textViewInstructions.text = Arrays.toString(bundle?.getStringArray("instructions"))
-        iterator()
-        // imageView = view.findViewById(R.id.imageView_instructions)
-        //imageView.setImageResource(recipe.image)
-    }
-
-    fun iterator(){
         var counter = 1
         var instructions = ""
         for(i in bundle?.getStringArray("instructions")!!){
@@ -44,4 +37,5 @@ class RecipeInstructionsFragment(bundle: Bundle?) : Fragment(){
         }
         binding.textViewInstructions.text = instructions
     }
+
 }
