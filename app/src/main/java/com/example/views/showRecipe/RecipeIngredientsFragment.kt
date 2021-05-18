@@ -25,13 +25,21 @@ class RecipeIngredientsFragment(bundle: Bundle?) : Fragment(){
     }
 
     fun setUpRecipe(){
-        binding.textViewIngredients.text = Arrays.toString(bundle?.getStringArray("ingredients"))
+        //binding.textViewIngredients.text = Arrays.toString(bundle?.getStringArray("ingredients"))
         //imageView = view.findViewById(R.id.)
         //imageView.setImageResource(recipe.image)
+        iterator()
     }
-    
-    fun iterate(){
-        
+
+    fun iterator(){
+        var counter = 1
+        var ingredients = ""
+        for(i in bundle?.getStringArray("ingredients")!!){
+            println(i)
+            ingredients += counter.toString() + ".  " +  i + "\n"
+            counter++
+        }
+        binding.textViewIngredients.text = ingredients
     }
 
 }

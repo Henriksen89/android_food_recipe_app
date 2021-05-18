@@ -28,15 +28,20 @@ class RecipeInstructionsFragment(bundle: Bundle?) : Fragment(){
     }
 
     fun setUpRecipe() {
-        binding.textViewInstructions.text = Arrays.toString(bundle?.getStringArray("instructions"))
+        //binding.textViewInstructions.text = Arrays.toString(bundle?.getStringArray("instructions"))
+        iterator()
         // imageView = view.findViewById(R.id.imageView_instructions)
         //imageView.setImageResource(recipe.image)
     }
 
     fun iterator(){
+        var counter = 1
+        var instructions = ""
         for(i in bundle?.getStringArray("instructions")!!){
-            binding.textViewInstructions.text = i
-
+            println(i)
+            instructions += counter.toString() + ".  " +  i + "\n"
+            counter++
         }
+        binding.textViewInstructions.text = instructions
     }
 }

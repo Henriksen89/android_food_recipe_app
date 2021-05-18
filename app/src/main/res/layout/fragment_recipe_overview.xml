@@ -4,18 +4,17 @@
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.views.showRecipe.RecipeOverviewFragment"
-    android:background="#71a3e3">
+    tools:context="com.example.views.showRecipe.RecipeOverviewFragment">
 
 
     <ImageView
         android:id="@+id/imageView_overview"
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:scaleType="centerCrop"
         tools:src="@tools:sample/backgrounds/scenic" />
 
     <TextView
@@ -37,6 +36,7 @@
         android:layout_marginLeft="16dp"
         android:text="TextView Description"
         android:textSize="16sp"
+        android:fontFamily="sans-serif"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_overview_title" />
 </androidx.constraintlayout.widget.ConstraintLayout>
