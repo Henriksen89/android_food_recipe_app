@@ -26,7 +26,7 @@ class RecipeViewModel(application: Application): AndroidViewModel(application) {
     private var recipes = MutableLiveData<ArrayList<Recipe>>()
     private val recipeList = ArrayList<Recipe>()
     private var images = ArrayList<Bitmap>()
-
+    var context = application.applicationContext
     init {
 
         images = getBitmap()
@@ -59,8 +59,8 @@ class RecipeViewModel(application: Application): AndroidViewModel(application) {
 
         val recipes = listOf(
                 Recipe("Hotdog", "NamNam", "MainCourse", ingredientsHotdog, instructionsHotdog, images.get(0)),
-                Recipe("Burger", "Salat", "MainCourse", ingredientsBurger, instructionsBurger, images.get(1)),
-                Recipe("IsLagkage", "Is", "Dessert", ingredientsIsLagKage, instructionsIsLagKage, images.get(2))
+                Recipe("Burger", "Salat", "MainCourse", ingredientsBurger, instructionsBurger, images.get(0)),
+                Recipe("IsLagkage", "Is", "Dessert", ingredientsIsLagKage, instructionsIsLagKage, images.get(0))
         )
 
         val mealTypes = listOf(
@@ -86,9 +86,9 @@ class RecipeViewModel(application: Application): AndroidViewModel(application) {
         val options = BitmapFactory.Options()
         options.inScaled = true
         var assetInStream: InputStream? = null
-        lateinit var context: Context
+
         //val d: Drawable = Resources.getSystem().getDrawable(R.drawable.bulgogi_burgers)
-        images.add(BitmapFactory.decodeResource(context.resources, R.drawable.bulgogi_burgers))
+        images.add(BitmapFactory.decodeResource(context.resources, R.drawable.bulgogi_burgers, options.inScaled))
         images.add(BitmapFactory.decodeResource(context.resources, R.drawable.green_salat))
         images.add(BitmapFactory.decodeResource(context.resources, R.drawable.vegansk_paprikagryderet))
 
