@@ -41,16 +41,25 @@ class RecipeViewModel(application: Application): AndroidViewModel(application) {
         val instructionsingredientsPaprikagryderet= listOf("Vask grønsager", "Smid hele molivitten i en gryde", "Kog sammen i 30 min", "Velbekomme")
 
         // Side Dishes
+        val ingredientsAsparges = listOf("Asparges", "Salt", "Olie")
+        val instructionsingredientsasparges = listOf("Vask aspargesene", "Steg på pande i 10 min", "Velbekomme")
 
         // Dessert
-        val instructionsIsLagKage = listOf("Smid", "det oven på hinanden")
-        val ingredientsIsLagKage = listOf("vaniljeis", "lagkagebund fra rema")
+        val instructionsChokolade = listOf("Chokoladen kommes i en mikroovns sikker skål. Smelt chokoladen i mikroovnen, til den er helt smeltet.",
+            "Rør fløden i 1 spsk. ad gangen, rør til alt fløden er indarbejdet i chokoladen, inden næste spsk. fløde hældes i.",
+            "Kom nu din mascarpone i skålen, og pisk med en elmixer, til du har en blød creme.",
+            "Kom din creme i en sprøjtepose, og læg den til side mens du forbereder resten.",
+        "I en dyb tallerken hælder du 1 shot stærk kaffe (og evt. 2-4 spsk baileys, hvis du er til det) Knæk dine ladyfingers midt over. Find dine 2 serverings glas frem.",
+        "Dyp dine ladyfingers kort i kaffen, sørg for at dyppe begge sider. Og placer så 1/2 ladyfinger i hvert glas",
+        "Fordel halvdelen af cremen i de 2 glas, og kom 2 halve ladyfingers i hvert glas. Fordel resten af cremen i glassene.")
+        val ingredientsChokolade = listOf("50 g Mascarpone", "75 g Fløde", "40 g Mørk chokolade", "1 shot Stærk kaffe", "Evt. 2-4 spsk. Bailyes")
 
         val recipes = listOf(
                 Recipe("Salat", "Lækker nem salat", "MainCourse", ingredientsSalat, instructionsSalat, images.get(1)),
                 Recipe("Burger","Verdens bedste burger","MainCourse", ingredientsBurger, instructionsBurger, images.get(0)),
-                Recipe("IsLagkage", "Is", "Dessert", ingredientsIsLagKage, instructionsIsLagKage, images.get(2)),
-                Recipe("Paprikagryderet", "Fremragende og nem gryderet", "MainCourse", ingredientsPaprikagryderet, instructionsingredientsPaprikagryderet, images.get(2))
+                Recipe("Chokolade dessert", "Hurtig chokolade dessert til 2", "Dessert", ingredientsChokolade, instructionsChokolade, images.get(3)),
+                Recipe("Paprikagryderet", "Fremragende og nem gryderet", "MainCourse", ingredientsPaprikagryderet, instructionsingredientsPaprikagryderet, images.get(2)),
+                Recipe("Risted asparges", "Super nem side dish", "SideDish", ingredientsAsparges, instructionsingredientsasparges, images.get(4))
         )
 
         val mealTypes = listOf(
@@ -79,6 +88,8 @@ class RecipeViewModel(application: Application): AndroidViewModel(application) {
         images.add(BitmapFactory.decodeResource(context.resources, R.drawable.bulgogi_burgers))
         images.add(BitmapFactory.decodeResource(context.resources, R.drawable.green_salat))
         images.add(BitmapFactory.decodeResource(context.resources, R.drawable.vegansk_paprikagryderet))
+        images.add(BitmapFactory.decodeResource(context.resources, R.drawable.choco))
+        images.add(BitmapFactory.decodeResource(context.resources, R.drawable.asparges))
 
         return images
     }
