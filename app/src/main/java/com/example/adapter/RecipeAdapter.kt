@@ -35,13 +35,10 @@ class RecipeAdapter(var recipeFragment: RecipeFragment) : RecyclerView.Adapter<R
             return oldItem == newItem
         }
     }
-
-
     private lateinit var recipes: ArrayList<Recipe>
     private lateinit var textViewTitle : TextView
     private lateinit var textViewDescription : TextView
     private lateinit var imageView: ImageView
-
 
     fun setRecipes(recipeList: ArrayList<Recipe>){
         recipes = recipeList
@@ -55,30 +52,20 @@ class RecipeAdapter(var recipeFragment: RecipeFragment) : RecyclerView.Adapter<R
         imageView = view.findViewById<ImageView>(R.id.recipeImageView)
         val cardView = view.findViewById<CardView>(R.id.card_view)
 
-
-
         return ViewHolder(view, imageView, textViewTitle, textViewDescription, cardView)
-        //viewHolder.textView.setOnClickListener { v -> deleteRecipe(viewHolder.adapterPosition, v) }
-        //return viewHolder;
     }
 
     private fun setCardViewListener(cardView: CardView, position: Int){
         cardView.setOnClickListener(){
             val bundle = Bundle()
+
             bundle.putString("textViewTitle", recipes[position].recipeTitle)
             bundle.putString("textViewDescription", recipes[position].recipeDescription)
-
-
             bundle.putStringArray("ingredients", recipes[position].ingredients.toTypedArray())
-
-
             bundle.putStringArray("instructions", recipes[position].instructions.toTypedArray())
-
             bundle.putParcelable("BitmapImage", recipes[position].image)
-            //val bundle = bundleOf("textViewTitle" to textViewTitle, "textViewDescription" to textViewDescription)
+
             recipeFragment.findNavController().navigate(R.id.action_recipeFragment_to_tabViewFragment, bundle)
-
-
         }
     }
 
@@ -91,6 +78,4 @@ class RecipeAdapter(var recipeFragment: RecipeFragment) : RecyclerView.Adapter<R
     }
 
     override fun getItemCount() = recipes.size
-
-
 }
