@@ -59,7 +59,7 @@ class RecipeViewModel(application: Application): AndroidViewModel(application) {
                 Recipe("Burger","Verdens bedste burger","MainCourse", ingredientsBurger, instructionsBurger, images.get(0)),
                 Recipe("Chokolade dessert", "Hurtig chokolade dessert til 2", "Dessert", ingredientsChokolade, instructionsChokolade, images.get(3)),
                 Recipe("Paprikagryderet", "Fremragende og nem gryderet", "MainCourse", ingredientsPaprikagryderet, instructionsingredientsPaprikagryderet, images.get(2)),
-                Recipe("Risted asparges", "Super nem side dish", "SideDish", ingredientsAsparges, instructionsingredientsasparges, images.get(4))
+                Recipe("Ristede asparges", "Super nem side dish", "SideDish", ingredientsAsparges, instructionsingredientsasparges, images.get(4))
         )
 
         val mealTypes = listOf(
