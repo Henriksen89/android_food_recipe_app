@@ -55,6 +55,16 @@ class RecipeAdapter(var recipeFragment: RecipeFragment) : RecyclerView.Adapter<R
         return ViewHolder(view, imageView, textViewTitle, textViewDescription, cardView)
     }
 
+    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
+        val cardView = viewHolder.cardView
+        viewHolder.textViewTitle.text = recipes[position].recipeTitle
+        viewHolder.textViewDescription.text = recipes[position].recipeDescription
+        viewHolder.imageView.setImageBitmap(recipes[position].image)
+        setCardViewListener(cardView, position)
+    }
+
+    override fun getItemCount() = recipes.size
+
     private fun setCardViewListener(cardView: CardView, position: Int){
         cardView.setOnClickListener(){
             val bundle = Bundle()
@@ -71,14 +81,4 @@ class RecipeAdapter(var recipeFragment: RecipeFragment) : RecyclerView.Adapter<R
         bundle.putParcelable("BitmapImage", recipes[position].image)
         return bundle
     }
-
-    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        val cardView = viewHolder.cardView
-        viewHolder.textViewTitle.text = recipes[position].recipeTitle
-        viewHolder.textViewDescription.text = recipes[position].recipeDescription
-        viewHolder.imageView.setImageBitmap(recipes[position].image)
-        setCardViewListener(cardView, position)
-    }
-
-    override fun getItemCount() = recipes.size
 }

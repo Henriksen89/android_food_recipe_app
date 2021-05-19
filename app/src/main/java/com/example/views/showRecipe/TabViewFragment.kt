@@ -31,7 +31,7 @@ class TabViewFragment : Fragment() {
 
         createTabs(tabLayout)
         setViewPagerListener(mViewPager, tabLayout, viewPager)
-        tabListener(tabLayout, viewPager)
+        setTabListener(tabLayout, viewPager)
 
         return binding.root
     }
@@ -41,7 +41,7 @@ class TabViewFragment : Fragment() {
         viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayout))
     }
 
-    private fun tabListener(tabLayout: TabLayout, viewPager: ViewPager) {
+    private fun setTabListener(tabLayout: TabLayout, viewPager: ViewPager) {
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 if (tab != null) {

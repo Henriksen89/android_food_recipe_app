@@ -14,7 +14,7 @@ import com.example.models.Recipe
     entities = [
         Recipe::class,
         MealType::class],
-    version = 13
+    version = 14
 )
 @TypeConverters(Converts::class)
 abstract class RecipeDatabase : RoomDatabase() {
