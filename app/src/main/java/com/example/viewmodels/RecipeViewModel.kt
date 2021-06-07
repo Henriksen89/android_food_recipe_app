@@ -57,8 +57,8 @@ class RecipeViewModel(application: Application): AndroidViewModel(application) {
         val recipes = listOf(
                 Recipe("Salad", "Delicious and easy salad", "MainCourse", ingredientsSalat, instructionsSalat, images.get(1)),
                 Recipe("Burger","The best burger in the world","MainCourse", ingredientsBurger, instructionsBurger, images.get(0)),
-                Recipe("Chokolade dessert", "Easy chocolate dessert for 2", "Dessert", ingredientsChokolade, instructionsChokolade, images.get(3)),
-                Recipe("Paprikagryderet", "Excellent and easy stew", "MainCourse", ingredientsPaprikagryderet, instructionsingredientsPaprikagryderet, images.get(2)),
+                Recipe("Chocolate dessert", "Easy chocolate dessert for 2", "Dessert", ingredientsChokolade, instructionsChokolade, images.get(3)),
+                Recipe("Paprika stew", "Excellent and easy stew", "MainCourse", ingredientsPaprikagryderet, instructionsingredientsPaprikagryderet, images.get(2)),
                 Recipe("Roasted asparagus", "Super easy side dish", "SideDish", ingredientsAsparges, instructionsingredientsasparges, images.get(4))
         )
 
