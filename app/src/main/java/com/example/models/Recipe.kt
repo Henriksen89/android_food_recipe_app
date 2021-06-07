@@ -1,12 +1,9 @@
 package com.example.models
 
 import android.graphics.Bitmap
-import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
-import com.example.db.Converts
-import com.google.gson.annotations.SerializedName
 
 @Entity
 data class Recipe(
@@ -22,3 +19,5 @@ data class Recipe(
     val image : Bitmap
 
 )
+
+

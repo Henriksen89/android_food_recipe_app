@@ -16,11 +16,6 @@ import java.lang.reflect.Field
 class MainActivity : AppCompatActivity()  {
     private lateinit var navController: NavController
 
-    // some transient state for the activity instance
-    var mealTypeState: String? = null
-
-    // private val recipeViewModel: RViewModel by viewModels()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

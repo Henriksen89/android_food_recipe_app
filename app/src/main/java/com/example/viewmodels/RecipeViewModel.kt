@@ -31,24 +31,24 @@ class RecipeViewModel(application: Application): AndroidViewModel(application) {
         images = getBitmap()
 
         // Main Courses
-        val ingredientsSalat = listOf("Salat", "Agurk", "Tomat", "Dressing" )
-        val instructionsSalat = listOf("Vask alle grønsager", "Snit grønsager og salaten groft", "Bland det hele sammen", "Velbekomme")
+        val ingredientsSalat = listOf("Salad", "Cucumber", "Tomato", "Dressing" )
+        val instructionsSalat = listOf("Wash all vegetables", "Cut all vegetables", "Mix it together", "Bon appetit")
 
-        val ingredientsBurger = listOf("Oksekød","Løg","Tomat","Agurk", "Ost", "Burger bolle")
-        val instructionsBurger = listOf( "Steg bøf","Skær grøntsager","Varm bruger bollen i ovnen i 5 min", "Burgeren samles og er klar til at spise", "Velbekomme")
+        val ingredientsBurger = listOf("Beef","Onion","Tomato","Cucumber", "Cheese", "Burger bun")
+        val instructionsBurger = listOf( "Roast the beef","Cut the vegetables","toast the burger bun in the oven for 5 minutes", "The burger should be assembled and ready to be eaten", "Bon Appetit")
 
-        val ingredientsPaprikagryderet = listOf("Bønner", "Paprika", "Tomat", "Chili" )
-        val instructionsingredientsPaprikagryderet= listOf("Vask grønsager", "Smid hele molivitten i en gryde", "Kog sammen i 30 min", "Velbekomme")
+        val ingredientsPaprikagryderet = listOf("Beans", "Paprika", "Tomato", "Chilli" )
+        val instructionsingredientsPaprikagryderet= listOf("Wash the vegetables", "Put all vegetables in a pot", "Boil it for 30 minutes", "Bon Appetit")
 
         // Side Dishes
-        val ingredientsAsparges = listOf("Asparges", "Salt", "Olie")
-        val instructionsingredientsasparges = listOf("Vask aspargesene", "Steg på pande i 10 min", "Velbekomme")
+        val ingredientsAsparges = listOf("Asparagus", "Salt", "Oil")
+        val instructionsingredientsasparges = listOf("Wash asparagus", "Roast them on a pan for 10 minutes", "Bon Appetit")
 
         // Dessert
-        val instructionsChokolade = listOf("Chokoladen kommes i en mikroovns sikker skål. Smelt chokoladen i mikroovnen, til den er helt smeltet.",
-            "Rør fløden i 1 spsk. ad gangen, rør til alt fløden er indarbejdet i chokoladen, inden næste spsk. fløde hældes i.",
-            "Kom nu din mascarpone i skålen, og pisk med en elmixer, til du har en blød creme.",
-            "Kom din creme i en sprøjtepose, og læg den til side mens du forbereder resten.",
+        val instructionsChokolade = listOf("The chocolate should be put in a bowl. Melt the chocolate in the microwave.",
+            "Stir the cream, until all chocolate is and cream is mixed well.",
+            "Put the mascarpone in a bowl and stir it until it is a soft creme.",
+            "Put the creme in a Kom din creme i en sprøjtepose, og læg den til side mens du forbereder resten.",
         "I en dyb tallerken hælder du 1 shot stærk kaffe (og evt. 2-4 spsk baileys, hvis du er til det) Knæk dine ladyfingers midt over. Find dine 2 serverings glas frem.",
         "Dyp dine ladyfingers kort i kaffen, sørg for at dyppe begge sider. Og placer så 1/2 ladyfinger i hvert glas",
         "Fordel halvdelen af cremen i de 2 glas, og kom 2 halve ladyfingers i hvert glas. Fordel resten af cremen i glassene.")
