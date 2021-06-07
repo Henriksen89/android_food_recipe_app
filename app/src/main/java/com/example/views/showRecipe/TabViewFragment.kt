@@ -22,7 +22,6 @@ class TabViewFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentTabViewBinding.inflate(inflater, container, false)
-        val viewPager: ViewPager = binding.viewPager
         val tabLayout: TabLayout = binding.tabs
         val mViewPager = binding.viewPager
         (activity as AppCompatActivity).supportActionBar?.title = "Details"
@@ -30,18 +29,20 @@ class TabViewFragment : Fragment() {
         bundle = requireArguments()
 
         createTabs(tabLayout)
-        setViewPagerListener(mViewPager, tabLayout, viewPager)
-        setTabListener(tabLayout, viewPager)
+        setViewPagerListener(mViewPager, tabLayout)
+        tabListener(tabLayout, mViewPager)
 
         return binding.root
     }
 
-    private fun setViewPagerListener(mViewPager: ViewPager, tabLayout: TabLayout, viewPager: ViewPager) {
+    // Instantiate tap adapter and set listener - swip
+    private fun setViewPagerListener(mViewPager: ViewPager, tabLayout: TabLayout) {
         mViewPager.adapter = TabAdapter(this, childFragmentManager, tabLayout.tabCount, bundle)
-        viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayout))
+        mViewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayout))
     }
 
-    private fun setTabListener(tabLayout: TabLayout, viewPager: ViewPager) {
+    // Tab
+    private fun tabListener(tabLayout: TabLayout, viewPager: ViewPager) {
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 if (tab != null) {

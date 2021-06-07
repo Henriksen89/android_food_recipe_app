@@ -20,16 +20,8 @@ class CardFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //recipeViewModel.init()
-        println("CardFragment")
         bindingCard = FragmentCardBinding.inflate(inflater, container, false)
         bindingCard.card = recipeViewModel
-
-
-        bindingCard.cardView.setOnClickListener {
-            println("Haallloooo")
-            //findNavController().navigate(R.id.action_cardFragment_to_tabViewFragment)
-        }
 
         return bindingCard.root
     }

@@ -15,6 +15,7 @@ import com.example.viewmodels.RecipeViewModel
 import androidx.fragment.app.activityViewModels
 
 class RecipeFragment : Fragment() {
+    // Data binding
     private var _binding: FragmentRecipeBinding? = null
     private val binding get() = _binding!!
 
@@ -35,7 +36,6 @@ class RecipeFragment : Fragment() {
 
         recyclerView = binding.RecyclerView
         recyclerView.setHasFixedSize(true)
-
         recyclerView.layoutManager = LinearLayoutManager(binding.root.context)
 
         adapter = RecipeAdapter(this)

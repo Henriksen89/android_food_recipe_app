@@ -22,19 +22,9 @@ class RecipeAdapter(var recipeFragment: RecipeFragment) : RecyclerView.Adapter<R
     inner class ViewHolder(frameLayout: View?,
                            val imageView: ImageView,
                            val textViewTitle: TextView,
-                           val textViewDescription: TextView, val cardView: CardView) : RecyclerView.ViewHolder(frameLayout!!)
+                           val textViewDescription: TextView,
+                           val cardView: CardView) : RecyclerView.ViewHolder(frameLayout!!)
 
-    // DiffUtil calculates the differences between two lists and enables only update those items there were different
-    // Run async in the background and will not block the main thread
-    private val differCallback = object : DiffUtil.ItemCallback<Recipe>() {
-        override fun areItemsTheSame(oldItem: Recipe, newItem: Recipe): Boolean {
-            return oldItem.recipeTitle == newItem.recipeTitle
-        }
-
-        override fun areContentsTheSame(oldItem: Recipe, newItem: Recipe): Boolean {
-            return oldItem == newItem
-        }
-    }
     private lateinit var recipes: ArrayList<Recipe>
     private lateinit var textViewTitle : TextView
     private lateinit var textViewDescription : TextView
@@ -44,6 +34,8 @@ class RecipeAdapter(var recipeFragment: RecipeFragment) : RecyclerView.Adapter<R
         recipes = recipeList
         notifyDataSetChanged()
     }
+
+    override fun getItemCount() = recipes.size
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.fragment_card, viewGroup, false)
@@ -62,8 +54,6 @@ class RecipeAdapter(var recipeFragment: RecipeFragment) : RecyclerView.Adapter<R
         viewHolder.imageView.setImageBitmap(recipes[position].image)
         setCardViewListener(cardView, position)
     }
-
-    override fun getItemCount() = recipes.size
 
     private fun setCardViewListener(cardView: CardView, position: Int){
         cardView.setOnClickListener(){

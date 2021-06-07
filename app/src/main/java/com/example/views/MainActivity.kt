@@ -18,7 +18,8 @@ class MainActivity : AppCompatActivity()  {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        // CursorWindow is a read or write operation for database call
+        // Increasing size of the cursor window to extend memory due to the large images in db
         try {
             val field: Field = CursorWindow::class.java.getDeclaredField("sCursorWindowSize")
             field.setAccessible(true)
@@ -27,9 +28,11 @@ class MainActivity : AppCompatActivity()  {
             e.printStackTrace()
         }
 
-
         setContentView(R.layout.activity_main)
+        // Get navigation graph by call the id of the navHostFragment in the mainActivity.xml
+        // navController is an object that handles the app navigation through nav host
         navController = findNavController(R.id.navHostFragment)
+        // Bottom appBar activity view
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.recipeFragment,
