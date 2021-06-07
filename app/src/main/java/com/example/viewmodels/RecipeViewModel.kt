@@ -48,18 +48,18 @@ class RecipeViewModel(application: Application): AndroidViewModel(application) {
         val instructionsChokolade = listOf("The chocolate should be put in a bowl. Melt the chocolate in the microwave.",
             "Stir the cream, until all chocolate is and cream is mixed well.",
             "Put the mascarpone in a bowl and stir it until it is a soft creme.",
-            "Put the creme in a Kom din creme i en sprøjtepose, og læg den til side mens du forbereder resten.",
-        "I en dyb tallerken hælder du 1 shot stærk kaffe (og evt. 2-4 spsk baileys, hvis du er til det) Knæk dine ladyfingers midt over. Find dine 2 serverings glas frem.",
-        "Dyp dine ladyfingers kort i kaffen, sørg for at dyppe begge sider. Og placer så 1/2 ladyfinger i hvert glas",
-        "Fordel halvdelen af cremen i de 2 glas, og kom 2 halve ladyfingers i hvert glas. Fordel resten af cremen i glassene.")
-        val ingredientsChokolade = listOf("50 g Mascarpone", "75 g Fløde", "40 g Mørk chokolade", "1 shot Stærk kaffe", "Evt. 2-4 spsk. Bailyes")
+            "Put the cream in a icing bag and lie it aside.",
+        "In a deep plate pour 1 shot of strong coffee. Break your ladyfingers. Find 2 service glasses.",
+        "Dip the ladyfingers in the coffee and place 1/2 ladyfinger in each glass",
+        "Seperate half of the creme and 2 half ladyfingers in the 2 glasses. Now put the rest of the creme in the two glasse - Bon Appetit.")
+        val ingredientsChokolade = listOf("50 g Mascarpone", "75 g cream", "40 g dark chocolate", "1 shot strong coffee")
 
         val recipes = listOf(
-                Recipe("Salat", "Lækker nem salat", "MainCourse", ingredientsSalat, instructionsSalat, images.get(1)),
-                Recipe("Burger","Verdens bedste burger","MainCourse", ingredientsBurger, instructionsBurger, images.get(0)),
-                Recipe("Chokolade dessert", "Hurtig chokolade dessert til 2", "Dessert", ingredientsChokolade, instructionsChokolade, images.get(3)),
-                Recipe("Paprikagryderet", "Fremragende og nem gryderet", "MainCourse", ingredientsPaprikagryderet, instructionsingredientsPaprikagryderet, images.get(2)),
-                Recipe("Ristede asparges", "Super nem side dish", "SideDish", ingredientsAsparges, instructionsingredientsasparges, images.get(4))
+                Recipe("Salad", "Delicious and easy salad", "MainCourse", ingredientsSalat, instructionsSalat, images.get(1)),
+                Recipe("Burger","The best burger in the world","MainCourse", ingredientsBurger, instructionsBurger, images.get(0)),
+                Recipe("Chokolade dessert", "Easy chocolate dessert for 2", "Dessert", ingredientsChokolade, instructionsChokolade, images.get(3)),
+                Recipe("Paprikagryderet", "Excellent and easy stew", "MainCourse", ingredientsPaprikagryderet, instructionsingredientsPaprikagryderet, images.get(2)),
+                Recipe("Roasted asparagus", "Super easy side dish", "SideDish", ingredientsAsparges, instructionsingredientsasparges, images.get(4))
         )
 
         val mealTypes = listOf(
