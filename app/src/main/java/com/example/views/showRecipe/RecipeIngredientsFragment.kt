@@ -33,6 +33,4 @@ class RecipeIngredientsFragment(bundle: Bundle?) : Fragment(){
         }
         binding.textViewIngredients.text = ingredients
     }
-
-
 }

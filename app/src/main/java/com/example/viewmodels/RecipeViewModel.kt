@@ -71,6 +71,7 @@ class RecipeViewModel(application: Application): AndroidViewModel(application) {
         recipes.forEach { insert(it) }
         mealTypes.forEach { insertMealType(it) }
 
+        // must be coroutine
         if (recipeList.isEmpty()) {
             recipeList.addAll(dao.getRecipeMealType(mealType))
         }
@@ -107,13 +108,14 @@ class RecipeViewModel(application: Application): AndroidViewModel(application) {
         }
     }
 
-
+    // Are called from recipeFragment
     fun getRecipes() : LiveData<ArrayList<Recipe>>{
         return recipes
     }
     /**
      * The updateMealType update the recipe list based on the selected meal type
      */
+    // must be coroutine
     fun updateMealType(mealType: String) {
         recipeList.clear()
         recipeList.addAll(dao.getRecipeMealType(mealType))
